@@ -3,7 +3,7 @@
         <div class="container-fluid d-flex justify-content-between mx-5 px-5">
             <div class="d-flex align-items-center">
                 <a class="navbar-brand" href="#">
-                    <img src="@/assets/image/aset-logo-creativelabz.png" width="50" height="50" alt="">
+                    <img src="@/assets/images/logos/aset-logo-creativelabz.png" width="50" height="50" alt="">
                 </a>
             </div>
             <div class="collapse navbar-collapse d-flex justify-content-end " id="navbarNav">
@@ -28,7 +28,7 @@
                         <a class="nav-link" href="#" style="color: #D6D6D6; font-weight: bold;">My account</a>
                     </li>
                     <li class="nav-item d-flex align-items-center justify-content-center">
-                        <img src="@/assets/icon/cart.svg" alt="">
+                        <img src="@/assets/icons/cart.svg" alt="">
                     </li>
                 </ul>
             </div>
