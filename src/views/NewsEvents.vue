@@ -1,20 +1,22 @@
 <script setup>
-import Navbar from '../components/Navbar.vue';
-import Footer from '../components/Footer.vue';
 import { ref } from 'vue';
+import Footer from '../components/Footer.vue';
+import Navbar from '../components/Navbar.vue';
 
-const carouselData = ref([{
-    title: 'title 1',
-    text: 'Rokok Elektrik tidak menghasilkan asap melainkan uap air (Liquid). Cairan yang terdapat pada rokok elektrik atau vape mengandung zat nikotin.',
-    url: '',
-    image_url: '/src/assets/images/news-and-events/hemp-oil-that-is-paired-with-hemp-brown-wooden-floor-scaled.jpg'
-},
-{
-    title: 'title 2',
-    text: 'Rokok Elektrik tidak menghasilkan asap melainkan uap air (Liquid). Cairan yang terdapat pada rokok elektrik atau vape mengandung zat nikotin',
-    url: 'dfdf dfdf',
-    image_url: '/src/assets/images/news-and-events/vaping-device-e-cigarette-scaled.jpg'
-}])
+const carouselData = ref([
+    {
+        title: 'Fakta Menarik Tentang Vape',
+        text: 'Rokok Elektrik tidak menghasilkan asap melainkan uap air (Liquid). Cairan yang terdapat pada rokok elektrik atau vape mengandung zat nikotin',
+        url: 'dfdf dfdf',
+        image_url: '/src/assets/images/news-and-events/vaping-device-e-cigarette-scaled.jpg'
+    },
+    {
+        title: 'Kandungan Apa Saja yang Ada di Liquid Vape?',
+        text: 'Rokok Elektrik tidak menghasilkan asap melainkan uap air (Liquid). Cairan yang terdapat pada rokok elektrik atau vape mengandung zat nikotin.',
+        url: '',
+        image_url: '/src/assets/images/news-and-events/hemp-oil-that-is-paired-with-hemp-brown-wooden-floor-scaled.jpg'
+    }
+])
 
 const newsAndEvents = ref([{
     title: 'Inilah 3 Jenis Rasa Liquid Vape Paling Populer di Tahun Ini',
@@ -25,20 +27,20 @@ const newsAndEvents = ref([{
     image_url: '/src/assets/images/news-and-events/VAPETASIA-STRAW-400x250.webp'
 },
 {
-    title: 'Cara Memilih Liquid Vape yang Tepat Sesuai dengan Selera Anda',
-    author: 'Creativlabz',
-    createdAt: 'Mar 27, 2023',
-    category: 'Liquid Vape',
-    text: 'Young beauty woman wearing in sunglasses smoking vape on gray background. Liquid vape adalah salah satu elemen penting dari rokok elektronik. Selain memberikan rasa dan aroma yang enak, liquid vape juga berperan dalam memberikan efek nikotin dan meningkatkan...',
-    image_url: '/src/assets/images/news-and-events/young-woman-wearing-sunglasses-smoking-vape-gray-wall-400x250.jpg'
-},
-{
     title: 'Kandungan Apa Saja yang Ada di Liquid Vape?',
     author: 'Creativlabz',
     createdAt: 'Mar 27, 2023',
     category: 'Liquid Vape',
     text: 'Rokok Elektrik tidak menghasilkan asap melainkan uap air (Liquid). Cairan yang terdapat pada rokok elektrik atau vape mengandung zat nikotin. Apa saja sih yang terkandung dalam cairan rokok elektrik? Dalam cairan rokok elektrik mengandung propilen glikol atau gliserin...',
     image_url: '/src/assets/images/news-and-events/hemp-oil-that-is-paired-with-hemp-brown-wooden-floor-400x250.jpg'
+},
+{
+    title: 'Cara Memilih Liquid Vape yang Tepat Sesuai dengan Selera Anda',
+    author: 'Creativlabz',
+    createdAt: 'Mar 27, 2023',
+    category: 'Liquid Vape',
+    text: 'Young beauty woman wearing in sunglasses smoking vape on gray background. Liquid vape adalah salah satu elemen penting dari rokok elektronik. Selain memberikan rasa dan aroma yang enak, liquid vape juga berperan dalam memberikan efek nikotin dan meningkatkan...',
+    image_url: '/src/assets/images/news-and-events/young-woman-wearing-sunglasses-smoking-vape-gray-wall-400x250.jpg'
 },
 {
     title: 'Fakta Menarik Tentang Vape',
@@ -67,22 +69,25 @@ const newsAndEvents = ref([{
 </script>
 <template>
     <Navbar />
-    <main class="bg-black pt-5" id="news-events">
+    <main class="bg-black pt-1 pt-lg-5" id="news-events">
         <h1>News & Events</h1>
         <div id="carouselExampleIndicators" class="carousel slide w-75 mx-auto" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button v-for="(item, index) in carouselData" :key="index" type="button"
-                    data-bs-target="#carouselExampleIndicators" :data-bs-slide-to="index" class="carousel-navigation"
-                    :class="{ 'active':index == 0 }" aria-current="true" aria-label="Slide 1"></button>
+                    data-bs-target="#carouselExampleIndicators" :data-bs-slide-to="index.toString()"
+                    class="carousel-navigation" :class="{ 'active': index === 0 }" :aria-current="index === 0"
+                    :aria-label="'Slide' + (index + 1)"></button>
             </div>
             <div class="carousel-inner">
                 <div v-for="(item, index) in  carouselData " :key="index"
-                    class="carousel-item rounded-5 text-white d-flex align-items-center" :class="{ 'active': index == 0 }"
+                    class="carousel-item rounded-5 text-white d-flex align-items-center" :class="{ 'active': index === 0 }"
                     :style="{ 'background-image': `url(${item.image_url})` }">
-                    <div class="carousel-content d-flex flex-column align-items-center">
-                        <h2>{{ item.title }}</h2>
-                        <p>{{ item.text }}</p>
-                        <button class="btn rounded-5 px-4 py-1">Read More</button>
+                    <div class="carousel-content d-flex flex-column align-items-center justify-content-center">
+                        <div class="d-flex flex-column align-items-center justify-content-center">
+                            <h2>{{ item.title }}</h2>
+                            <p>{{ item.text }}</p>
+                            <button class="btn rounded-5 px-4 py-1">Read More</button>
+                        </div>
                     </div>
                 </div>
 
@@ -98,9 +103,9 @@ const newsAndEvents = ref([{
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <section class="news-events-container gap-5 justify-content-center mt-5">
+        <section class="news-events-container mt-5 mx-auto">
             <template v-for="(item, index) in newsAndEvents" :key="index">
-                <div class="news-event-item">
+                <div class="news-event-item d-flex flex-column">
                     <img :src="item.image_url" class="d-block img-fluid">
                     <div class="news-event-teks">
                         <h2>{{ item.title }}</h2>
@@ -114,23 +119,20 @@ const newsAndEvents = ref([{
     <Footer />
 </template>
 <style scoped>
-#news-events {
-    margin-top: 70px;
-}
-
 #news-events h1 {
     font-family: 'Quattrocento', 'Times New Roman', Times, serif;
     color: white;
-    font-size: 4.1rem;
+    font-size: 2rem;
     font-weight: 700;
     text-align: center;
-    margin: 2rem 0;
+    margin: 4rem 0 3rem 0;
 }
 
 .carousel-navigation {
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 100%;
+    margin: 0 0.3rem;
 }
 
 .carousel-item {
@@ -150,12 +152,17 @@ const newsAndEvents = ref([{
     bottom: 0;
     left: 0;
     right: 0;
-    /* background: rgba(0, 0, 0, 0.6); */
+    background: rgba(0, 0, 0, 0.6);
     pointer-events: none;
 }
 
 .carousel-content {
     margin: 0 auto;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-content div {
     width: 60%;
 }
 
@@ -183,25 +190,28 @@ const newsAndEvents = ref([{
 }
 
 .news-events-container {
-    columns: 3; 
-    align-items: start;
+    columns: 1;
+    gap: 4rem;
+    width: 75%;
 }
 
 .news-event-item {
-    margin: 1rem;
+    margin-bottom: 2rem;
     background-color: white;
-    padding: 2px;
+    padding: 0px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    width: 100%;
 }
 
 .news-event-item img {
-    border-top-left-radius: 22px;
-    border-top-right-radius: 22px;
+    border-top-left-radius: 21px;
+    padding: 1px;
+    border-top-right-radius: 21px;
 }
 
 .news-event-teks {
-    margin: 0.5rem;
+    margin: 1.5rem 1rem 1rem 1rem;
 }
 
 .news-event-teks h2 {
@@ -218,5 +228,27 @@ const newsAndEvents = ref([{
     font-size: 0.875rem;
     line-height: 170%;
     color: #666666;
+}
+
+@media (min-width: 768px) {
+    .news-events-container {
+        columns: 2;
+    }
+
+    .news-event-item {
+        margin-bottom: 4rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    #news-events h1 {
+        font-size: 4.1rem;
+    }
+}
+
+@media (min-width: 1240px) {
+    .news-events-container {
+        columns: 3;
+    }
 }
 </style>
