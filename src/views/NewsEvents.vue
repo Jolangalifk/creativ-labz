@@ -69,7 +69,7 @@ const newsAndEvents = ref([{
 </script>
 <template>
     <Navbar />
-    <main class="bg-black pt-1 pt-lg-5" id="news-events">
+    <main class="bg-black pt-5" id="news-events">
         <h1>News & Events</h1>
         <div id="carouselExampleIndicators" class="carousel slide w-75 mx-auto" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -168,7 +168,7 @@ const newsAndEvents = ref([{
 
 .carousel-content h2 {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.75rem;
+    font-size: 1rem;
     font-weight: 500;
     text-align: center;
 }
@@ -243,6 +243,10 @@ const newsAndEvents = ref([{
 @media (min-width: 1024px) {
     #news-events h1 {
         font-size: 4.1rem;
+    }
+
+    .carousel-content h2 {
+        font-size: 1.75rem;
     }
 }
 
