@@ -1,5 +1,5 @@
 <template>
-    <Navbar /> 
+    <Navbar />
     <section id="contact">
         <div class="contact-info">
             <div class="contact d-flex">
@@ -16,10 +16,12 @@
                         <input type="text" class="form-control border-white rounded-4" id="name" placeholder="Name">
                     </div>
                     <div class="">
-                        <input type="email" class="form-control border-white rounded-4" id="exampleInputEmail1" placeholder="Email Addres">
+                        <input type="email" class="form-control border-white rounded-4" id="exampleInputEmail1"
+                            placeholder="Email Addres">
                     </div>
                     <div class="">
-                        <textarea class="form-control  border-white rounded-4" aria-label="With textarea" placeholder="Message"></textarea>
+                        <textarea class="form-control  border-white rounded-4" aria-label="With textarea"
+                            placeholder="Message"></textarea>
                     </div>
                     <div class="contact-button">
                         <button type="submit" class="btn rounded-5">SUBMIT</button>
@@ -59,7 +61,9 @@
         <div class="visit">
             <div class="text">
                 <h1>Visit our offline store!</h1>
-                <p>Kunjungi toko kami dan temukan berbagai produk yang tersedia dengan kualitas terbaik. Tim kami siap memberikan saran dan rekomendasi produk terbaik yang sesuai dengan kebutuhan Anda. Silakan kunjungi toko kami pada jam operasional yang telah ditentukan dan nikmati pengalaman berbelanja yang menyenangkan.</p>
+                <p>Kunjungi toko kami dan temukan berbagai produk yang tersedia dengan kualitas terbaik. Tim kami siap
+                    memberikan saran dan rekomendasi produk terbaik yang sesuai dengan kebutuhan Anda. Silakan kunjungi toko
+                    kami pada jam operasional yang telah ditentukan dan nikmati pengalaman berbelanja yang menyenangkan.</p>
                 <button>Get Directionts</button>
             </div>
             <div class="working-hours">
@@ -103,7 +107,7 @@ import Footer from '../components/Footer.vue';
     padding: 10rem;
     margin-top: 0;
     background-blend-mode: overlay;
-    background-color: rgba(0, 0, 0, 0.4);   
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .contact {
@@ -224,7 +228,7 @@ import Footer from '../components/Footer.vue';
     padding: 1.3rem;
     background-color: #fff;
     border-radius: 15px;
-}   
+}
 
 .contact-media .media .img {
     width: 80px;
@@ -243,7 +247,7 @@ import Footer from '../components/Footer.vue';
     font-size: 1rem;
     font-weight: 500;
     color: #000;
-    margin: 0;
+    margin: 0;  
 }
 
 .contact-media .media-1 {
@@ -254,7 +258,7 @@ import Footer from '../components/Footer.vue';
     padding: 1.3rem;
     background-color: #fff;
     border-radius: 15px;
-}   
+}
 
 .contact-media .media-1 .img {
     width: 80px;
@@ -360,7 +364,7 @@ import Footer from '../components/Footer.vue';
 }
 
 .visit .working-hours .hourse-time h2 {
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: 600;
     color: #fff;
     margin: 0.7rem;
@@ -409,7 +413,7 @@ import Footer from '../components/Footer.vue';
     }
 
     .contact-button .btn {
-        width: 45%;
+        width: 75%;
     }
 
     .contact-media {
@@ -471,7 +475,7 @@ import Footer from '../components/Footer.vue';
 
 @media (max-width: 1024px) {
     .contact-info {
-        padding: 2rem 6rem;
+        padding: 8rem 2rem;
         margin: 0;
     }
 
@@ -484,7 +488,7 @@ import Footer from '../components/Footer.vue';
     }
 
     .visit {
-        padding: 6rem;
+        padding: 6rem 2rem;
         gap: 2rem;
     }
 
@@ -494,6 +498,12 @@ import Footer from '../components/Footer.vue';
 
     .visit .text p {
         font-size: 18px;
+    }
+}
+
+@media (min-width: 768px) {
+    .visit .working-hours .hourse-time h2 {
+        font-size: 1.25rem;
     }
 }
 </style>
