@@ -28,7 +28,7 @@
                             style="color: #999999; font-weight: 700; font-size: 14px;">Product</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/news-and-event" class="nav-link active" aria-current="page" href="#"
+                        <router-link to="/news-event" class="nav-link active" aria-current="page" href="#"
                             style="color: #999999; font-weight: 700; font-size: 14px;">News & Event</router-link>
                     </li>
                     <li class="nav-item">

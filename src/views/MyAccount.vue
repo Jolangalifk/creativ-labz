@@ -177,7 +177,7 @@ a {
 @media (max-width: 768px) {
     .wrapper {
         flex-direction: column;
-        padding: 5rem;
+        padding: 3rem;
         padding-top: 10rem;
     }
 
