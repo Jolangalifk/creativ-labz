@@ -1,90 +1,181 @@
+<script setup>
+import { onMounted, ref } from 'vue';
+const isScrolled = ref(false)
+const showMenu = ref(false)
+
+onMounted(() => {
+    if (!window) return
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+            isScrolled.value = true
+        } else {
+            isScrolled.value = false
+        }
+    })
+})
+</script>
 <template>
-    <nav class="navbar navbar-expand-md fixed-top">
-        <div class="nav-wp container-fluid d-flex justify-content-between px-3 px-md-0">
-            <div class="logo">
-                <router-link class="image" to="/">
-                    <img src="@/assets/images/logos/aset-logo-creativelabz.png" width="50" height="50" alt="">
+    <header id="header" class="d-flex justify-content-between align-items-center"
+        :class="{ 'scrolled-navbar': isScrolled }">
+        <router-link class="image" to="/">
+            <img src="@/assets/images/logos/aset-logo-creativelabz.png" alt="logo" class="d-none d-lg-block"
+                :width="isScrolled ? 34 : 46" :height="isScrolled ? 34 : 46">
+            <img src="@/assets/images/logos/aset-logo-creativelabz.png" alt="logo" class="d-lg-none" width="46" height="46">
+
+        </router-link>
+        <nav class="" :class="{ 'show': showMenu }">
+            <div>
+                <router-link to="/" class=" active" aria-current="page" href="#">Home</router-link>
+                <router-link to="/about-us" class=" active" aria-current="page" href="#">About Us</router-link>
+                <router-link to="/shop" class=" active" aria-current="page" href="#">Product</router-link>
+                <router-link to="/contact" class=" active" aria-current="page" href="#">Contact</router-link>
+                <router-link to="/my-account" class=" active" aria-current="page" href="#">My Account</router-link>
+                <router-link to="/" class="d-none d-lg-flex align-items-center">
+                    <img src="@/assets/icons/cart.svg" alt="" class="m-0 p-0">
                 </router-link>
             </div>
-            <div class="d-flex align-items-center justify-content-center d-md-none">
-                <img src="@/assets/icons/cart.svg" alt="" class="">
-                <button class="btn hamburger-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="nav-content collapse navbar-collapse d-md-flex justify-content-end" id="navbarNav">
-                <ul class="navbar-nav gap-2">
-                    <li class="nav-item">
-                        <router-link to="/" class="nav-link active" aria-current="page" href="#"
-                            style="color: #999999; font-weight: 700; font-size: 14px;">Home</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/about-us" class="nav-link active" aria-current="page" href="#"
-                            style="color: #999999; font-weight: 700; font-size: 14px;">About Us</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/product" class="nav-link active" aria-current="page" href="#"
-                            style="color: #999999; font-weight: 700; font-size: 14px;">Product</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/news-event" class="nav-link active" aria-current="page" href="#"
-                            style="color: #999999; font-weight: 700; font-size: 14px;">News & Event</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/contact" class="nav-link active" aria-current="page" href="#"
-                            style="color: #999999; font-weight: 700; font-size: 14px;">Contact</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/my-account" class="nav-link active" aria-current="page" href="#"
-                            style="color: #999999; font-weight: 700; font-size: 14px;">My Account</router-link>
-                    </li>
-
-                    <li class="nav-item d-flex align-items-center justify-content-center d-none d-md-flex">
-                        <img src="@/assets/icons/cart.svg" alt="">
-                    </li>
-
-                </ul>
-            </div>
+        </nav>
+        <div class="btn-container">
+            <router-link to="/" class="">
+                <img src="@/assets/icons/cart.svg" alt="" width="20" height="20" class="p-0 m-0">
+            </router-link>
+            <button class="btn" @click="showMenu = !showMenu">
+                <img src="@/assets/icons/hamburger.svg">
+            </button>
         </div>
-    </nav>
+    </header>
 </template>
-
 <style scoped>
-.navbar {
-    background-color: rgba(0, 0, 0, 0.8);
+#header {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    background-color: white;
+    padding: 1rem 1rem 1rem 2rem;
+    position: relative;
+    z-index: 2000;
+
 }
 
-.nav-wp {
-    padding: 0;
-    width: 80%;
+img[alt="logo"] {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.logo {
-    width: 50px;
-    height: 50px;
+header.scrolled-navbar {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    height: 3.325rem !important;
 }
 
-.image img {
+nav {
+    position: absolute;
+    top: 78px;
+    width: 75%;
+    left: 50%;
+    display: grid;
+    transform: translateX(-50%);
+    grid-template-rows: 0fr;
+    transition: 500ms all ease-out;
+}
+
+nav div {
+    overflow: hidden;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 0 0.7rem;
 }
 
-.hamburger-btn:focus {
-    outline: none;
-    border: none;
+.show {
+    z-index: 999;
+    background-color: white;
+    top: 78px;
+    left: 50%;
+    grid-template-rows: 1fr !important;
+    padding-bottom: 0.7rem ;
 }
 
-@media (max-width: 768px) {
-    .navbar {
-        padding: 1rem;
-        background-color: white;
+.show div {
+    border-top: 3px solid #00c0ab;
+}
+
+nav a {
+    color: #999999;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0.3rem;
+}
+
+nav a:hover {
+    color: #666666;
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    filter: brightness(0);
+}
+
+@media (min-width: 768px) {
+    #header {
+        padding: 1rem 5.5rem;
+    }
+}
+
+@media (min-width:1024px) {
+    #header {
+        background-color: black;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 0rem 8.5rem;
+        height: 4.625rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .nav-wp {
-        width: 100%;
+    nav div {
+        display: flex;
+        align-items: stretch;
+        flex-direction: row;
+        background-color: transparent;
+        gap: 2rem;
+        height: 100%;
+    }
+
+    .show {
+        background-color: transparent;
+        padding-bottom: 0;
+    }
+
+    .show div {
+        border: none;
+    }
+
+    nav {
+        position: static;
+        inset: 0;
+        width: auto;
+        display: block;
+        transform: translateX(0);
+    }
+
+    nav a {
+        align-self: center;
+        margin: 0;
+        font-weight: 700;
+        width: auto;
+        padding: 0;
+    }
+
+    .btn-container {
+        display: none;
     }
 }
 </style>
-  
