@@ -29,7 +29,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-image: linear-gradient(180deg, #000000 21%, rgba(10, 10, 10, 0.58) 100%),
-        url('src/assets/images/footer-bg.webp') !important;
+        url('/src/assets/images/footer-bg.webp') !important;
     background-position: center;
     padding-bottom: 8rem;
 }
