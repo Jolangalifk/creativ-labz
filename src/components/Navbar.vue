@@ -25,11 +25,14 @@ onMounted(() => {
         </router-link>
         <nav class="" :class="{ 'show': showMenu }">
             <div>
-                <router-link to="/" class=" active" aria-current="page" href="#">Home</router-link>
-                <router-link to="/about-us" class=" active" aria-current="page" href="#">About Us</router-link>
-                <router-link to="/shop" class=" active" aria-current="page" href="#">Product</router-link>
-                <router-link to="/contact" class=" active" aria-current="page" href="#">Contact</router-link>
-                <router-link to="/my-account" class=" active" aria-current="page" href="#">My Account</router-link>
+                <router-link to="/" class="active" aria-current="page" activeClass="active-route">Home</router-link>
+                <router-link to="/about-us" class="active" aria-current="page" activeClass="active-route">About
+                    Us</router-link>
+                <router-link to="/shop" class="active" aria-current="page" activeClass="active-route">Product</router-link>
+                <router-link to="/contact" class="active" aria-current="page"
+                    activeClass="active-route">Contact</router-link>
+                <router-link to="/my-account" class="active" aria-current="page" activeClass="active-route">My
+                    Account</router-link>
                 <router-link to="/" class="d-none d-lg-flex align-items-center">
                     <img src="@/assets/icons/cart.svg" alt="" class="m-0 p-0">
                 </router-link>
@@ -93,7 +96,7 @@ nav div {
     top: 78px;
     left: 50%;
     grid-template-rows: 1fr !important;
-    padding-bottom: 0.7rem ;
+    padding-bottom: 0.7rem;
 }
 
 .show div {
@@ -121,6 +124,10 @@ nav a:hover {
     display: flex;
     align-items: center;
     filter: brightness(0);
+}
+
+a.active-route {
+    color: #00c0ab;
 }
 
 @media (min-width: 768px) {
@@ -177,5 +184,4 @@ nav a:hover {
     .btn-container {
         display: none;
     }
-}
-</style>
+}</style>
