@@ -46,10 +46,10 @@ const router = createRouter({
       component: () => import('../views/ProductDetailView.vue')
     },
     {
-      path: '/detail-news-events',
-      name: 'Detail News & Events',
+      path: '/detail-news-events/:id',
+      name: 'DetailNewsEvents',
       component: () => import('../views/DetailNewsEvents.vue')
-    }
+    }    
   ]
 })
 

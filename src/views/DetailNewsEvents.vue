@@ -1,12 +1,34 @@
 <script setup>
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
+import PostRecomendations from '../components/PostRecomendations.vue';
+
+const data = [
+    {
+        id: 1,
+        name: '1.Buah-Buahan Tropis',
+        image: '/src/assets/images/news-and-events/VAPETASIA-STRAW.webp',
+        description: 'Rasa buah-buahan tropis seperti mangga, nanas, dan jeruk telah menjadi pilihan yang populer bagi penggemar liquid vape di seluruh dunia. Rasa buah-buahan tropis memberikan sensasi yang menyegarkan dan cocok digunakan di musim panas.'
+    },
+    {
+        id: 2,
+        name: '2.Kue dan Roti',
+        image: '/src/assets/images/news-and-events/WhatsApp-Image-2021-02-10-at-11.48.46.webp',
+        description: 'Liquid vape dengan rasa kue dan roti seperti blueberry muffin, apple pie, dan cinnamon roll juga sangat populer di kalangan penggemar vape. Rasa kue dan roti memberikan sensasi manis dan hangat pada lidah Anda.'
+    },
+    {
+        id: 3,
+        name: '3.Menthol dan Mint',
+        image: '/src/assets/images/news-and-events/WhatsApp-Image-2022-03-14-at-11.24.12-819x1024.webp',
+        description: 'Liquid vape dengan rasa menthol dan mint memberikan sensasi yang dingin pada tenggorokan dan memberikan pengalaman merokok yang segar dan menyegarkan. Rasa menthol dan mint sangat populer pada pengguna vape yang mencari sensasi yang berbeda dari rasa liquid vape tradisional.'
+    }
+]
 </script>
 
 <template>
     <Navbar />
-    <main class="bg-white pt-5">
-        <div class="wrapper">
+    <main class="bg-white">
+        <div class="wrapper-detail">
             <div class="title">
                 <h1>Inilah 3 Jenis Rasa Liquid Vape Paling Populer di Tahun Ini</h1>
                 <p>by Creativlabz | Mar 27, 2023 | Liquid Vape</p>
@@ -16,45 +38,44 @@ import Footer from '../components/Footer.vue';
                 banyak variasi rasa liquid vape yang diperkenalkan ke pasaran. Di bawah ini, kami telah merangkum 5 jenis
                 rasa liquid vape paling populer di tahun ini.</p>
             <div class="list-item">
-                <div class="item">
-                    <h2>1.Buah-Buahan Tropis</h2>
+                <router-link :to="'/detail-news-events/' + item.id" v-for="item in data" :key="item.id" class="item">
+                    <h2>{{ item.name }}</h2>
                     <div class="item-image">
-                        <img src="@/assets/images/news-and-events/VAPETASIA-STRAW.webp" alt="">
+                        <img :src="item.image" alt="">
                     </div>
-                    <p>Rasa buah-buahan tropis seperti mangga, nanas, dan jeruk telah menjadi pilihan yang populer bagi
-                        penggemar liquid vape di seluruh dunia. Rasa buah-buahan tropis memberikan sensasi yang menyegarkan
-                        dan cocok digunakan di musim panas.</p>
-                </div>
-                <div class="item">
-                    <h2>2.Kue dan Roti</h2>
-                    <div class="item-image">
-                        <img src="@/assets/images/news-and-events/WhatsApp-Image-2021-02-10-at-11.48.46.webp" alt="">
-                    </div>
-                    <p>Liquid vape dengan rasa kue dan roti seperti blueberry muffin, apple pie, dan cinnamon roll juga
-                        sangat populer di kalangan penggemar vape. Rasa kue dan roti memberikan sensasi manis dan hangat
-                        pada lidah Anda.</p>
-                </div>
-                <div class="item">
-                    <h2>3.Menthol dan Mint</h2>
-                    <div class="item-image">
-                        <img src="@/assets/images/news-and-events/WhatsApp-Image-2022-03-14-at-11.24.12-819x1024.webp"
-                            alt="">
-                    </div>
-                    <p>Liquid vape dengan rasa menthol dan mint memberikan sensasi yang dingin pada tenggorokan dan
-                        memberikan pengalaman merokok yang segar dan menyegarkan. Rasa menthol dan mint sangat populer pada
-                        pengguna vape yang mencari sensasi yang berbeda dari rasa liquid vape tradisional.</p>
-                </div>
+                    <p>{{ item.description }}</p>
+                </router-link>
             </div>
+        </div>
+        <div class="d-lg-flex">
+            <div class="vr"></div>
+            <PostRecomendations class="post-recomendations" />
         </div>
     </main>
     <Footer />
 </template>
 
+
 <style scoped>
-.wrapper {
-    padding: 5rem 10rem 0 10rem;
-    margin-right: 5rem;
-    border-right: 1px solid #e5e5e5;
+main {
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+    width: 100%;
+}
+
+.post-recomendations {
+    margin-bottom: 2rem;
+    margin-right: 7rem;
+    padding-top: 7rem;
+}
+
+.wrapper-detail {
+    width: 100%;
+    padding: 10rem;
+    padding-right: 7rem;
+    padding-top: 8rem;
+    padding-bottom: 5rem;
 }
 
 .title {
@@ -77,7 +98,7 @@ import Footer from '../components/Footer.vue';
     font-family: 'Open Sans', sans-serif;
 }
 
-.wrapper p {
+.wrapper-detail p {
     font-size: 14px;
     color: #666666;
     font-weight: 400;
@@ -87,6 +108,7 @@ import Footer from '../components/Footer.vue';
 
 .item {
     margin-bottom: 2rem;
+    text-decoration: none;
 }
 
 .item h2 {
@@ -109,11 +131,21 @@ import Footer from '../components/Footer.vue';
     vertical-align: bottom;
 }
 
-@media (max-width: 768px) {
-    .wrapper {
-        padding: 2.5rem;
-        padding-top: 5rem;
+@media (max-width: 767px) {
+    main {
+        flex-direction: column;
+    }
+
+    .post-recomendations {
         margin-right: 0;
+        padding-top: 0;
+    }
+
+    .wrapper-detail {
+        margin: 0;
+        padding: 2.5rem;
+        padding-top: 8rem;
+        padding-bottom: 1rem;
         border-right: none;
     }
 
@@ -124,9 +156,22 @@ import Footer from '../components/Footer.vue';
 }
 
 @media (min-width: 768px) and (max-width: 980px) {
-    .wrapper {
+    main {
+        flex-direction: column;
+    }
+
+    .post-recomendations {
+        margin-right: 5rem;
+        margin-left: 5rem;
+        margin-bottom: 3rem;
+        padding: 0;
+    }
+
+    .wrapper-detail {
+        margin: 0;
         padding: 5rem;
-        margin-right: 0;
+        padding-top: 8rem;
+        padding-bottom: 1rem;
         border-right: none;
     }
 }
