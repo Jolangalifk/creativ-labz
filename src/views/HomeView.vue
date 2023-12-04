@@ -1,6 +1,9 @@
 <script setup>
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
+import { ref } from 'vue';
+
+const showAlertModal = ref(true)
 </script>
 
 <template>
@@ -28,6 +31,9 @@ import Footer from '../components/Footer.vue';
           <div class="item-product">
             <div class="image-product">
               <img src="@/assets/images/home/WhatsApp-Image-2023-07-17-at-11.32.14-300x300.jpeg" alt="">
+              <div class="overlay d-flex justify-content-center align-items-center">
+                <img src="@/assets/icons/circle-plus.png" width="35">
+              </div>
             </div>
             <h2>CASSADAGA CANNOLI BE NUTS 60ML</h2>
             <p>Rp180.000</p>
@@ -35,6 +41,9 @@ import Footer from '../components/Footer.vue';
           <div class="item-product">
             <div class="image-product">
               <img src="@/assets/images/home/79be5858-4b41-4fba-9ef0-d93f01e24116-300x300.jpg" alt="">
+              <div class="overlay d-flex justify-content-center align-items-center">
+                <img src="@/assets/icons/circle-plus.png" width="35">
+              </div>
             </div>
             <h2>CASSADAGA CANNOLI BE NUTS 60ML</h2>
             <p>Rp180.000</p>
@@ -42,6 +51,9 @@ import Footer from '../components/Footer.vue';
           <div class="item-product">
             <div class="image-product">
               <img src="@/assets/images/home/b6bb296c-4a7c-49f5-a811-c70d81c871b9-300x300.jpg" alt="">
+              <div class="overlay d-flex justify-content-center align-items-center">
+                <img src="@/assets/icons/circle-plus.png" width="35">
+              </div>
             </div>
             <h2>CASSADAGA CANNOLI BE NUTS 60ML</h2>
             <p>Rp180.000</p>
@@ -49,6 +61,9 @@ import Footer from '../components/Footer.vue';
           <div class="item-product">
             <div class="image-product">
               <img src="@/assets/images/home/97a3d517-adc9-490c-9deb-64baa8666a49-300x300.jpg" alt="">
+              <div class="overlay d-flex justify-content-center align-items-center">
+                <img src="@/assets/icons/circle-plus.png" width="35">
+              </div>
             </div>
             <h2>CASSADAGA CANNOLI BE NUTS 60ML</h2>
             <p>Rp180.000</p>
@@ -60,12 +75,12 @@ import Footer from '../components/Footer.vue';
       <h1>Why Choose Us?</h1>
       <div class="privilege-wrapper">
         <div class="privilege-item bg-white rounded-4 d-flex flex-column align-items-center justify-content-center">
-          <img src="@/assets/images/home/truck.svg" alt="">
+          <img src="@/assets/images/home/truck-fast-solid.svg" alt="">
           <h3>Pengiriman Cepat</h3>
           <p>Melayani pengiriman produk yang cepat</p>
         </div>
         <div class="privilege-item bg-white rounded-4 d-flex flex-column align-items-center justify-content-center">
-          <img src="@/assets/images/home/payment.svg" alt="">
+          <img src="@/assets/images/home/wallet.svg" alt="">
           <h3>Harga Terbaik</h3>
           <p>Penjualan Prduk dengan harga terbaik</p>
         </div>
@@ -82,8 +97,10 @@ import Footer from '../components/Footer.vue';
         <div class="d-flex flex-column">
           <span>About Us</span>
           <h1>Creativ Labz</h1>
-          <p>PT Kreatif Vapelab Indonesia merupakan salah satu distributor terbesar Liquid USA . kami berpengalaman dari tahun 2016 hingga sekarang.</p>
-          <p>Sebagai perusahaan distributor berpengalaman dari 2016, kami memberikan  harga yang sangat bersaing dengan kualitas terbaik.</p>
+          <p>PT Kreatif Vapelab Indonesia merupakan salah satu distributor terbesar Liquid USA . kami berpengalaman dari
+            tahun 2016 hingga sekarang.</p>
+          <p>Sebagai perusahaan distributor berpengalaman dari 2016, kami memberikan harga yang sangat bersaing dengan
+            kualitas terbaik.</p>
         </div>
         <div class="image-liquid">
           <img src="@/assets/images/home/image-13.png" alt="">
@@ -91,12 +108,18 @@ import Footer from '../components/Footer.vue';
       </div>
     </div>
   </main>
+  <section class="alert-modal-container" v-show="showAlertModal">
+    <div class="alert-modal">
+      <img class="close-btn p-2" tabindex="0" src="@/assets/icons/close.png" @click="showAlertModal = false">
+      <img src="@/assets/images/home/18plus-banner.png" alt="18+ warning" class="alert-image">
+    </div>
+  </section>
   <Footer />
 </template>
 
 <style scoped>
 #home {
-  padding-top: 4rem;
+  padding-top: 0rem;
   overflow-y: auto;
   overflow-x: hidden;
   perspective: 10px;
@@ -106,18 +129,20 @@ import Footer from '../components/Footer.vue';
   background-image: url('@/assets/images/home/bg-liquid.png'), linear-gradient(136deg, #0a0a0a 33%, #00c4a6 100%);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   background-blend-mode: multiply;
   height: 100vh;
   width: 100%;
-  padding: 12rem 10rem;
+  padding: 11rem 8rem;
 }
 
 .information {
   width: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: end;
 }
 
 .information h1 {
@@ -163,7 +188,7 @@ import Footer from '../components/Footer.vue';
   position: relative;
   transform-style: preserve-3d;
   z-index: -1;
-  padding: 8rem 10rem;
+  padding: 8rem 8rem;
   padding-top: 3rem;
 }
 
@@ -173,7 +198,9 @@ import Footer from '../components/Footer.vue';
   width: 100%;
   object-fit: cover;
   z-index: -1;
-  transform: translateZ(-5px) scale(2);
+  left: 0;
+  top: 0;
+  transform: translateZ(0px) scale(1);
 }
 
 .wrapper-product {
@@ -182,7 +209,7 @@ import Footer from '../components/Footer.vue';
 }
 
 .wrapper-product h2 {
-  font-family: 'Quattrocento',Georgia,"Times New Roman",serif;
+  font-family: 'Quattrocento', Georgia, "Times New Roman", serif;
   font-size: 36px;
   font-weight: 700;
   margin-bottom: 3rem;
@@ -213,7 +240,7 @@ import Footer from '../components/Footer.vue';
 .list-product {
   display: flex;
   padding: 0;
-  justify-content: space-between;
+  gap: 4rem;
 }
 
 .item-product {
@@ -223,11 +250,19 @@ import Footer from '../components/Footer.vue';
   position: relative;
 }
 
-.item-product img {
+.item-product h2 {
+  margin-top: 1.5rem;
+}
+
+.item-product h2,
+.item-product p {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.item-product .image-product>img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  margin-bottom: 1rem;
 }
 
 .item-product h2 {
@@ -251,7 +286,7 @@ import Footer from '../components/Footer.vue';
   background-size: cover;
   background-position: center;
   background-blend-mode: multiply;
-  padding: 3rem 10rem;
+  padding: 3rem 8rem;
 }
 
 .privilege h1 {
@@ -348,13 +383,76 @@ import Footer from '../components/Footer.vue';
   object-fit: contain;
 }
 
+.alert-modal-container {
+  position: fixed;
+  z-index: 2000;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.alert-modal {
+  background-color: white;
+  position: relative;
+  box-shadow: #646161 0 0 8px 3px !important;
+  border-radius: 7px;
+}
+
+.alert-modal .alert-image {
+  border-radius: inherit;
+  width: 100%;
+}
+
+.alert-modal .close-btn {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  z-index: 2001;
+  cursor: pointer;
+}
+
+.image-product {
+  width: 100%;
+  position: relative;
+}
+
+.image-product .overlay {
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+
+.image-product .overlay img {
+  filter: invert(61%) sepia(53%) saturate(3514%) hue-rotate(133deg) brightness(93%) contrast(102%);
+}
+
+.image-product:hover div.overlay {
+  opacity: 100%;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
 @media only screen and (max-width: 767px) {
   .creativ-labz {
-    padding: 4rem 2.5rem;
+    padding: 3rem 2rem;
+    height: 80vh;
+    background-position: center;
   }
 
   .information {
-    width: 100%;
+    width: 100%;    
   }
 
   .information h1 {
@@ -397,8 +495,9 @@ import Footer from '../components/Footer.vue';
 
   .list-product {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
+    justify-items: center;
   }
 
   .item-product {
@@ -406,16 +505,15 @@ import Footer from '../components/Footer.vue';
     margin-bottom: 0;
   }
 
-  .item-product img {
+  .item-product .image-product>img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    margin-bottom: 1rem;
   }
 
   .item-product h2 {
     font-family: 'poppins';
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: 500;
     margin-bottom: 1rem;
     line-height: 1.3em;
@@ -424,7 +522,7 @@ import Footer from '../components/Footer.vue';
   }
 
   .item-product p {
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: 500;
     color: #00c0ab;
   }
@@ -481,7 +579,7 @@ import Footer from '../components/Footer.vue';
 
 }
 
-@media (max-width: 980px) {
+@media (min-width: 767px) and (max-width: 980px) {
   .creativ-labz {
     padding: 8rem 5rem;
   }
@@ -524,8 +622,9 @@ import Footer from '../components/Footer.vue';
 
   .list-product {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
+    justify-items: center;
   }
 
   .item-product {
