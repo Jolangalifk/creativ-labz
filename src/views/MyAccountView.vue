@@ -1,7 +1,7 @@
 <template>
     <Navbar />
     <main>
-        <div class="wrapper d-flex">
+        <div class="wrapper d-flex" v-if="!user">
             <div id="login">
                 <form>
                     <h2>Login</h2>
@@ -10,17 +10,17 @@
                             <label for="exampleInputEmail1" class="mb-1">Username or email address <span
                                     class="text-danger">*</span></label>
                             <input type="email" class="form-control border-0 rounded-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp">
+                                aria-describedby="emailHelp" v-model="loginData.usernameOrEmail">
                         </div>
                         <div class="form-group mb-3">
                             <label for="exampleInputPassword1" class="mb-1">Password <span
                                     class="text-danger">*</span></label>
                             <div class="input-group">
-                                <input v-model="password" :type="showPassword ? 'text' : 'password'"
+                                <input v-model="loginData.password" :type="showLoginPassword ? 'text' : 'password'"
                                     class="form-control border-0 rounded-0" id="exampleInputPassword1" />
                                 <div class="input-group-append">
-                                    <span class="input-group-text" @click="togglePasswordVisibility">
-                                        <img v-if="showPassword" src="@/assets/icons/eye-open-icon.svg"
+                                    <span class="input-group-text" @click="showLoginPassword = !showLoginPassword">
+                                        <img v-if="showLoginPassword" src="@/assets/icons/eye-open-icon.svg"
                                             alt="Hide Password" />
                                         <img v-else src="@/assets/icons/eye-closed-icon.svg" alt="Show Password" />
                                     </span>
@@ -47,17 +47,17 @@
                             <label for="exampleInputEmail1" class="mb-1">Username or email address <span
                                     class="text-danger">*</span></label>
                             <input type="email" class="form-control border-0 rounded-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp">
+                                aria-describedby="emailHelp" v-model="registerData.usernameOrEmail">
                         </div>
                         <div class="form-group mb-3">
                             <label for="exampleInputPassword1" class="mb-1">Password <span
                                     class="text-danger">*</span></label>
                             <div class="input-group">
-                                <input v-model="password" :type="showPassword ? 'text' : 'password'"
+                                <input v-model="registerData.password" :type="showRegisterPassword ? 'text' : 'password'"
                                     class="form-control border-0 rounded-0" id="exampleInputPassword1" />
                                 <div class="input-group-append">
-                                    <span class="input-group-text" @click="togglePasswordVisibility">
-                                        <img v-if="showPassword" src="@/assets/icons/eye-open-icon.svg"
+                                    <span class="input-group-text" @click="showRegisterPassword = !showRegisterPassword">
+                                        <img v-if="showRegisterPassword" src="@/assets/icons/eye-open-icon.svg"
                                             alt="Hide Password" />
                                         <img v-else src="@/assets/icons/eye-closed-icon.svg" alt="Show Password" />
                                     </span>
@@ -72,6 +72,20 @@
                 </form>
             </div>
         </div>
+        <div v-else class="dashboard">
+            <AccountSideNavigation class="navigation" />
+            <section>
+                <p>Hello <span class="highlight">{{ user.username }}</span> (not <span class="highlight">{{ user.username
+                }}</span>? <button>Log
+                        out</button>)
+                </p>
+                <p>From you account dashboard you can view <router-link to="/">recent orders</router-link>, manage your
+                    <router-link to="/">shipping and billing addresses</router-link>, and <router-link to="/">edit your
+                        password
+                        and account details</router-link>
+                </p>
+            </section>
+        </div>
     </main>
     <Footer />
 </template>
@@ -79,15 +93,27 @@
 <script setup>
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
+import AccountSideNavigation from "../components/AccountSideNavigation.vue"
 
 import { ref } from 'vue';
 
-const password = ref('');
-const showPassword = ref(false);
+const showLoginPassword = ref(false);
+const showRegisterPassword = ref(false);
 
-const togglePasswordVisibility = () => {
-    showPassword.value = !showPassword.value;
-};
+const loginData = ref({
+    usernameOrEmail: '',
+    password: ''
+})
+
+const registerData = ref({
+    usernameOrEmail: '',
+    password: ''
+})
+
+
+const user = ref({
+    username: 'slametkopling'
+})
 </script>
 
 <style scoped>
@@ -129,6 +155,7 @@ label[for="rememberMe"],
 
 a {
     font-family: Open Sans, Arial, sans-serif;
+    text-decoration: none;
 }
 
 .form-login {
@@ -156,6 +183,7 @@ a {
     position: absolute;
     right: 0;
     top: 25%;
+    z-index: 100;
 }
 
 .input-group-text img {
@@ -171,7 +199,7 @@ a {
     color: #fff;
     font-size: 16px;
     letter-spacing: 1px;
-    font-family: Open Sans, Arial, sans-serif;
+    font-family: 'Open Sans', Arial, sans-serif;
 }
 
 #register {
@@ -187,7 +215,41 @@ a {
     font-size: 16px;
     letter-spacing: 1px;
     border: none;
-    font-family: Open Sans, Arial, sans-serif;
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.dashboard {
+    width: 100%;
+    margin-top: 3rem;
+    padding: 1rem;
+}
+
+.dashboard section {
+    padding: 0 1rem 3rem 1rem;
+}
+
+.dashboard a {
+    color: #2ea3f2;
+}
+
+.dashboard * {
+    font-size: 0.875rem;
+    line-height: 170%;
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.dashboard button {
+    background-color: transparent;
+    color: #2ea3f2;
+    padding: 0;
+    outline: none;
+    border: none;
+}
+
+.dashboard span.highlight {
+    font-weight: 700 !important;
+    color: #666666;
+
 }
 
 @media (min-width: 768px) {
@@ -197,6 +259,10 @@ a {
 
     h2 {
         font-size: 1.4rem;
+    }
+
+    .dashboard {
+        padding: 1.5rem 3.5rem;
     }
 }
 
@@ -228,6 +294,21 @@ a {
 
     .wrapper {
         padding: 10rem 8rem;
+    }
+
+    .dashboard {
+        display: flex;
+        padding: 5.6rem;
+    }
+
+    .dashboard .navigation {
+        width: 40%;
+    }
+}
+
+@media (min-width: 1366px) {
+    .dashboard {
+        padding: 7rem;
     }
 }
 </style>

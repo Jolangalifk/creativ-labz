@@ -33,7 +33,37 @@ const router = createRouter({
     {
       path: '/my-account',
       name: 'my account',
-      component: () => import('../views/MyAccount.vue')
+      component: () => import('../views/MyAccountView.vue')
+    },
+    {
+      path: '/my-account/orders',
+      name: 'Orders',
+      component: () => import('../views/OrdersView.vue')
+    },
+    {
+      path: '/my-account/downloads',
+      name: 'Downloads',
+      component: () => import('../views/DownloadsView.vue')
+    },
+    {
+      path: '/my-account/edit-address',
+      name: 'Addresses',
+      component: () => import('../views/AddressesView.vue')
+    },
+    {
+      path: '/my-account/edit-address/billing',
+      name: 'Billing Address',
+      component: () => import('../views/BillingAddressView.vue')
+    },
+    {
+      path: '/my-account/edit-address/shipping',
+      name: 'Shipping Address',
+      component: () => import('../views/ShippingAddressView.vue')
+    },
+    {
+      path: '/my-account/edit-account',
+      name: 'Account Details',
+      component: () => import('../views/AccountDetailsView.vue')
     },
     {
       path: '/shop',
@@ -49,7 +79,7 @@ const router = createRouter({
       path: '/detail-news-events/:id',
       name: 'DetailNewsEvents',
       component: () => import('../views/DetailNewsEvents.vue')
-    }    
+    }
   ]
 })
 
