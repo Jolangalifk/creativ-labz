@@ -190,8 +190,7 @@ import Footer from '../components/Footer.vue';
 }
 
 .contact-button .btn {
-    width: 35%;
-    height: 100%;
+    width: 75%;
     padding: 0.7rem 1rem;
     background-color: #00c0ab;
     color: #fff;
@@ -247,7 +246,7 @@ import Footer from '../components/Footer.vue';
     font-size: 1rem;
     font-weight: 500;
     color: #000;
-    margin: 0;  
+    margin: 0;
 }
 
 .contact-media .media-1 {
@@ -381,7 +380,7 @@ import Footer from '../components/Footer.vue';
 @media (max-width: 980px) {
     .contact-info {
         margin: 0;
-        padding: 0;
+        padding: 4rem 2rem 2rem 2rem;
         background-color: rgba(0, 0, 0, 0.1);
     }
 
@@ -412,9 +411,9 @@ import Footer from '../components/Footer.vue';
         margin-bottom: 0.5rem;
     }
 
-    .contact-button .btn {
-        width: 75%;
-    }
+    /* .contact-button .btn {
+     width: 35%;
+    } */
 
     .contact-media {
         margin-top: 4rem;
@@ -448,7 +447,7 @@ import Footer from '../components/Footer.vue';
 
     .visit {
         width: 100%;
-        padding: 0;
+        padding: 2rem;
         flex-direction: column;
         gap: 2rem;
         background-color: rgba(0, 0, 0, 0.6);
@@ -473,10 +472,11 @@ import Footer from '../components/Footer.vue';
 
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 980px) and (max-width: 1024px) {
     .contact-info {
         padding: 8rem 2rem;
         margin: 0;
+
     }
 
     .contact-media .media-1 {
@@ -504,6 +504,24 @@ import Footer from '../components/Footer.vue';
 @media (min-width: 768px) {
     .visit .working-hours .hourse-time h2 {
         font-size: 1.25rem;
+    }
+
+    .contact-info {
+        padding: 5rem;
+    }
+
+    .contact-button .btn {
+        width: 35%;
+    }
+
+    .visit {
+        padding: 5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .contact-info {
+        margin-top: 60px;
     }
 }
 </style>

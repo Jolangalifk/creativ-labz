@@ -57,7 +57,6 @@ import Footer from "../components/Footer.vue"
   background-image: url('src/assets/images/about-us/baackground-cl-e1679853251444.png');
   background-size: cover;
   background-repeat: no-repeat;
-  margin-top: 4rem;
   padding: 2rem 1rem;
 }
 
@@ -140,6 +139,7 @@ import Footer from "../components/Footer.vue"
   .about-info {
     padding-top: 1rem;
     padding-bottom: 4rem;
+    margin-top: 60px;
   }
 
   .about-info>.about {

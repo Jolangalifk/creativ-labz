@@ -106,7 +106,6 @@ const products = ref([
 }
 
 .hero {
-    margin-top: 60px;
     position: relative;
 }
 
@@ -280,7 +279,7 @@ const products = ref([
 
 @media (min-width: 1024px) {
     .hero {
-        margin-top: 0;
+        margin-top: 60px;
     }
 
     .hero-content {

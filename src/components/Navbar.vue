@@ -55,7 +55,7 @@ onMounted(() => {
     padding: 1rem 1rem 1rem 2rem;
     position: relative;
     z-index: 2000;
-
+    border-bottom: 1px solid rgba(0, 192, 171, 0.15);
 }
 
 img[alt="logo"] {
@@ -145,6 +145,7 @@ a.active-route {
         padding: 0rem 8.5rem;
         height: 4.625rem;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: none;
     }
 
     nav div {
