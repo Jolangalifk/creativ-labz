@@ -1,8 +1,28 @@
 <script setup>
 import Navbar from "../components/Navbar.vue"
 import Footer from "../components/Footer.vue"
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { toRupiah } from "../utils"
+
+const parallaxOffset = ref(0);
+
+const handleScroll = () => {
+    requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        parallaxOffset.value = `${scrollY / 2}`;
+    })
+
+};
+
+onMounted(() => {
+    if (!window) return
+    window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+    if (!window) return
+    window.removeEventListener('scroll', handleScroll);
+});
 
 const products = ref([
     {
@@ -41,9 +61,8 @@ const products = ref([
     <Navbar />
     <main id="products">
         <section class="hero">
-            <div class="parallax-wrapper">
-                <div class="parallax">
-                </div>
+            <div class="parallax-wrapper" :style="{ marginTop: `-${parallaxOffset}px` }">
+                <div class="parallax" :style="{ transform: `translateY(${parallaxOffset}px)` }"></div>
             </div>
             <div class="hero-content d-flex flex-column align-items-center">
                 <h1>OUR PRODUCT</h1>
@@ -64,7 +83,7 @@ const products = ref([
             </div>
             <div class="products">
 
-                <template v-for="(product, index) in products" :key="index">
+                <template v-for="( product, index ) in  products " :key="index">
                     <router-link :to="'/shop'" class="product">
                         <div class="product-img">
                             <img :src="product.image_url" class="img-fluid">
@@ -137,15 +156,16 @@ const products = ref([
 .parallax-wrapper {
     inset: 0;
     overflow: hidden;
-    height: 400px;
+    height: 300px;
 }
 
 .parallax {
     background-image: url('/src/assets/images/products/women-vaping-from-hookah-indoors-scaled.jpg');
     background-position: top;
     background-size: cover;
-    height: 400px;
+    height: 450px;
     width: 100%;
+    background-origin: border-box;
 }
 
 .products-wrapper {
@@ -202,7 +222,6 @@ const products = ref([
     inset: 0;
     width: 100%;
     height: 100%;
-    
     opacity: 0;
 }
 
@@ -295,9 +314,11 @@ const products = ref([
         width: 30%
     }
 
-    .parallax-wrapper,
-    .parallax {
+    .parallax-wrapper {
         height: 540px;
+    }
+    .parallax {
+        height: 800px;
     }
 
     .products-wrapper {
