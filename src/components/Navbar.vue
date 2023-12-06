@@ -29,12 +29,14 @@ onMounted(() => {
                 <router-link to="/about-us" class="active" aria-current="page" activeClass="active-route">About
                     Us</router-link>
                 <router-link to="/shop" class="active" aria-current="page" activeClass="active-route">Product</router-link>
+                <router-link to="/news-event" class="active" aria-current="page" activeClass="active-route">News &
+                    Event</router-link>
                 <router-link to="/contact" class="active" aria-current="page"
                     activeClass="active-route">Contact</router-link>
                 <router-link to="/my-account" class="active" aria-current="page" activeClass="active-route">My
-                    Account</router-link>
+                    account</router-link>
                 <router-link to="/" class="d-none d-lg-flex align-items-center">
-                    <img src="@/assets/icons/cart.svg" alt="" class="m-0 p-0">
+                    <img src="@/assets/icons/cart.svg" alt="" class="m-0 p-0" width="18" height="18">
                 </router-link>
             </div>
         </nav>
@@ -154,7 +156,7 @@ a.active-route {
         align-items: stretch;
         flex-direction: row;
         background-color: transparent;
-        gap: 2rem;
+        gap: 1.65rem;
         height: 100%;
     }
 
@@ -178,7 +180,7 @@ a.active-route {
     nav a {
         align-self: center;
         margin: 0;
-        font-weight: 700;
+        font-weight: 600;
         width: auto;
         padding: 0;
     }
