@@ -27,31 +27,37 @@ onUnmounted(() => {
 const products = ref([
     {
         name: 'SCREWBACCO MENTHOL FREEBASE 60ML',
+        slug: 'slug',
         price: 240000,
         image_url: '/src/assets/images/products/product-1.webp'
     },
     {
         name: 'SCREWBACCO MENTHOL FREEBASE 60ML',
+        slug: 'slug',
         price: 240000,
         image_url: '/src/assets/images/products/product-1.webp'
     },
     {
         name: 'SCREWBACCO MENTHOL FREEBASE 60ML',
+        slug: 'slug',
         price: 240000,
         image_url: '/src/assets/images/products/product-1.webp'
     },
     {
         name: 'SCREWBACCO MENTHOL FREEBASE 60ML',
+        slug: 'slug',
         price: 240000,
         image_url: '/src/assets/images/products/product-1.webp'
     },
     {
         name: 'SCREWBACCO MENTHOL FREEBASE 60ML',
+        slug: 'slug',
         price: 240000,
         image_url: '/src/assets/images/products/product-1.webp'
     },
     {
         name: 'SCREWBACCO MENTHOL FREEBASE 60ML',
+        slug: 'slug',
         price: 240000,
         image_url: '/src/assets/images/products/product-1.webp'
     }
@@ -82,9 +88,8 @@ const products = ref([
                 </select>
             </div>
             <div class="products">
-
                 <template v-for="( product, index ) in  products " :key="index">
-                    <router-link :to="'/shop'" class="product">
+                    <router-link :to="'/product/' + product.slug" class="product">
                         <div class="product-img">
                             <img :src="product.image_url" class="img-fluid">
                             <div class="overlay d-flex justify-content-center align-items-center">
@@ -174,7 +179,7 @@ const products = ref([
     background-size: cover;
     margin: -1.5rem 1rem 0 1em;
     padding: 2rem;
-    background-position: center;
+    background-position: right;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     background-color: white;
@@ -262,6 +267,21 @@ const products = ref([
     font-size: 0.8rem;
 }
 
+.products-wrapper {
+    animation: fadeInLeft 1.5s ease-in-out;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 @media (min-width: 768px) {
     .hero-content input {
         width: 160%
@@ -315,14 +335,15 @@ const products = ref([
     }
 
     .parallax-wrapper {
-        height: 540px;
+        height: 470px;
     }
+
     .parallax {
         height: 800px;
     }
 
     .products-wrapper {
-        margin: -4rem 5rem 0 5rem;
+        margin: -4rem 4rem 0 4rem;
         padding: 5rem 7rem;
     }
 
@@ -334,9 +355,8 @@ const products = ref([
 
 @media (min-width: 1366px) {
 
-    .parallax-wrapper,
-    .parallax {
-        height: 625px;
+    .parallax-wrapper {
+        height: 540px;
     }
 
     .products-wrapper {
