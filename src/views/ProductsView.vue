@@ -148,6 +148,7 @@ const products = ref([
     font-weight: 700;
     letter-spacing: 0.1em;
     text-align: center;
+    animation: slideDown 800ms ease-in-out;
 }
 
 .hero-content input {
@@ -280,6 +281,18 @@ const products = ref([
     to {
         opacity: 1;
     }
+}
+
+@keyframes slideDown {
+  from {
+    
+    transform: translateY(-8%);
+  }
+
+  to {
+    
+    transform: translateY(0%);
+  }
 }
 
 @media (min-width: 768px) {

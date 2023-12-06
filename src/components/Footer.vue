@@ -1,3 +1,22 @@
+<script setup>
+import { onMounted } from 'vue';
+
+onMounted(() => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+
+    const contacts = document.querySelectorAll('.contact');
+    contacts.forEach((el) => {
+        observer.observe(el);
+    });
+});
+</script>
 <template>
     <footer id="footer">
         <div class="row pt-5 justify-content-between mx-1 mx-lg-5 px-lg-5">
@@ -58,6 +77,20 @@
 
 .socials-media>a>img {
     height: 1.125rem;
+}
+
+.fade-in {
+    animation: fadeIn 1.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @media (min-width: 1024px) {

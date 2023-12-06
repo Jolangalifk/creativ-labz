@@ -1,6 +1,23 @@
 <script setup lang="ts">
 import Navbar from "../components/Navbar.vue"
 import Footer from "../components/Footer.vue"
+import { onMounted } from "vue";
+
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-down');
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+
+  const strengthItemImages = document.querySelectorAll('.strength-item > img');
+  strengthItemImages.forEach((el) => {
+    observer.observe(el);
+  });
+});
 </script>
 <template>
   <Navbar />
@@ -23,20 +40,20 @@ import Footer from "../components/Footer.vue"
         <button class="btn rounded-5 px-3">Contact Us</button>
       </div>
     </div>
-    <div class="strenght mb-5">
-      <h2 class="text-center mt-4 mb-5">Why Choose Us?</h2>
+    <div class="strength mb-5 pb-4">
+      <h2 class="text-center mt-5 mb-5">Why Choose Us?</h2>
       <div class="row justify-content-center gap-4 gap-sm-0 p-3">
-        <div class="col-12 col-md-4 strenght-item d-flex flex-column align-items-center justify-content-center">
+        <div class="col-12 col-md-4 strength-item d-flex flex-column align-items-center justify-content-center">
           <img src="@/assets/images/about-us/truck-fast-solid.svg" width="96  " height="96">
           <h3 class="mt-2">Pengiriman Cepat</h3>
           <p class="text-center">Melayani pengiriman produk yang cepat</p>
         </div>
-        <div class="col-12  col-md-4 strenght-item d-flex flex-column align-items-center justify-content-center">
+        <div class="col-12  col-md-4 strength-item d-flex flex-column align-items-center justify-content-center">
           <img src="@/assets/images/about-us/wallet.svg" width="96" height="96">
           <h3 class="mt-2">Harga Terbaik</h3>
           <p class="text-center">Penjualan Prduk dengan harga terbaik</p>
         </div>
-        <div class="col-12  col-md-4 strenght-item d-flex flex-column align-items-center justify-content-center">
+        <div class="col-12  col-md-4 strength-item d-flex flex-column align-items-center justify-content-center">
           <img src="@/assets/images/about-us/medal.svg" width="96" height="96">
           <h3 class="mt-2">Produck Berkualitas</h3>
           <p class="text-center">Jaminan produk berkualitas</p>
@@ -96,18 +113,18 @@ import Footer from "../components/Footer.vue"
 
 }
 
-.strenght {
+.strength {
   background-color: white;
 }
 
-.strenght>h2 {
+.strength>h2 {
   font-size: 1.125rem;
   line-height: 140%;
   font-weight: 700;
   color: #666666;
 }
 
-.strenght-item>h3 {
+.strength-item>h3 {
   font-weight: 500;
   font-size: 1rem;
   line-height: 118%;
@@ -115,11 +132,27 @@ import Footer from "../components/Footer.vue"
   text-align: center;
 }
 
-.strenght-item>p {
+.strength-item>p {
   font-size: 0.875rem;
   font-weight: 500;
   color: #666666;
   line-height: 170%;
+}
+
+.fade-down {
+  animation: fadeDown 1s ease-in-out;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 
 @media (min-width: 768px) {
@@ -177,15 +210,15 @@ import Footer from "../components/Footer.vue"
     font-size: 1rem;
   }
 
-  .strenght {
+  .strength {
     background-color: white;
   }
 
-  .strenght>h2 {
+  .strength>h2 {
     font-size: 2.25rem;
   }
 
-  .strenght-item>h3 {
+  .strength-item>h3 {
     font-size: 1.125rem;
   }
 }
