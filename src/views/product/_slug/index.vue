@@ -1,11 +1,11 @@
 <script setup>
-import Footer from '../components/Footer.vue';
-import Navbar from '../components/Navbar.vue';
-import PostRecomendations from '../components/PostRecomendations.vue';
-import StarRating from '../components/StarRating.vue';
+import Footer from '../../../components/Footer.vue';
+import Navbar from '../../../components/Navbar.vue';
+import PostRecomendations from '../../../components/PostRecomendations.vue';
+import StarRating from '../../../components/StarRating.vue';
 
 import { ref } from 'vue';
-import { toRupiah } from '../utils';
+import { toRupiah } from '../../../utils';
 
 const product = ref({
     name: 'SCREWBACCO MENTHOL FREEBASE 60ML',

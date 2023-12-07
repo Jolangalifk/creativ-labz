@@ -1,3 +1,7 @@
+<script setup>
+import Navbar from '../../components/Navbar.vue';
+import Footer from '../../components/Footer.vue';
+</script>
 <template>
     <Navbar />
     <section id="contact">
@@ -87,12 +91,6 @@
     </section>
     <Footer />
 </template>
-
-<script setup>
-import Navbar from '../components/Navbar.vue';
-import Footer from '../components/Footer.vue';
-</script>
-
 <style scoped>
 #contact {
     font-family: 'Poppins', sans-serif;

@@ -1,7 +1,7 @@
 <script setup>
-import Navbar from '../components/Navbar.vue'
-import Footer from '../components/Footer.vue'
-import AccountSideNavigation from '../components/AccountSideNavigation.vue'
+import Navbar from '../../components/Navbar.vue'
+import Footer from '../../components/Footer.vue'
+import AccountSideNavigation from '../../components/AccountSideNavigation.vue'
 import { ref } from 'vue'
 
 const billingAddress = ref({

@@ -1,8 +1,8 @@
 <script setup>
-import Navbar from '../components/Navbar.vue';
-import Footer from '../components/Footer.vue';
+import Navbar from '../../components/Navbar.vue';
+import Footer from '../../components/Footer.vue';
 import { ref, computed } from 'vue';
-import { toRupiah } from '../utils';
+import { toRupiah } from '../../utils';
 
 const cartItems = ref([
     {
