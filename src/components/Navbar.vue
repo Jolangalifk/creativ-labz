@@ -35,13 +35,13 @@ onMounted(() => {
                     activeClass="active-route">Contact</router-link>
                 <router-link to="/my-account" class="active" aria-current="page" activeClass="active-route">My
                     account</router-link>
-                <router-link to="/" class="d-none d-lg-flex align-items-center">
+                <router-link to="/cart" class="d-none d-lg-flex align-items-center">
                     <img src="@/assets/icons/cart.svg" alt="" class="m-0 p-0" width="18" height="18">
                 </router-link>
             </div>
         </nav>
         <div class="btn-container">
-            <router-link to="/" class="">
+            <router-link to="/cart" class="">
                 <img src="@/assets/icons/cart.svg" alt="" width="20" height="20" class="p-0 m-0">
             </router-link>
             <button class="btn" @click="showMenu = !showMenu">
