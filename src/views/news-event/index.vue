@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-import Footer from '../components/Footer.vue';
-import Navbar from '../components/Navbar.vue';
+import Footer from '../../components/Footer.vue';
+import Navbar from '../../components/Navbar.vue';
 
 const carouselData = ref([
     {

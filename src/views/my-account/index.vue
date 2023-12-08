@@ -1,3 +1,28 @@
+<script setup>
+import Navbar from '../../components/Navbar.vue';
+import Footer from '../../components/Footer.vue';
+import AccountSideNavigation from "../../components/AccountSideNavigation.vue"
+
+import { ref } from 'vue';
+
+const showLoginPassword = ref(false);
+const showRegisterPassword = ref(false);
+
+const loginData = ref({
+    usernameOrEmail: '',
+    password: ''
+})
+
+const registerData = ref({
+    usernameOrEmail: '',
+    password: ''
+})
+
+
+const user = ref({
+    username: 'slametkopling'
+})
+</script>
 <template>
     <Navbar />
     <main>
@@ -89,33 +114,6 @@
     </main>
     <Footer />
 </template>
-
-<script setup>
-import Navbar from '../components/Navbar.vue';
-import Footer from '../components/Footer.vue';
-import AccountSideNavigation from "../components/AccountSideNavigation.vue"
-
-import { ref } from 'vue';
-
-const showLoginPassword = ref(false);
-const showRegisterPassword = ref(false);
-
-const loginData = ref({
-    usernameOrEmail: '',
-    password: ''
-})
-
-const registerData = ref({
-    usernameOrEmail: '',
-    password: ''
-})
-
-
-const user = ref({
-    username: 'slametkopling'
-})
-</script>
-
 <style scoped>
 .wrapper {
     padding: 10rem;

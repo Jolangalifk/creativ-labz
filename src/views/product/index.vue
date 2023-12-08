@@ -1,8 +1,8 @@
 <script setup>
-import Navbar from "../components/Navbar.vue"
-import Footer from "../components/Footer.vue"
+import Navbar from "../../components/Navbar.vue"
+import Footer from "../../components/Footer.vue"
 import { ref, onMounted, onUnmounted } from 'vue';
-import { toRupiah } from "../utils"
+import { toRupiah } from "../../utils"
 
 const parallaxOffset = ref(0);
 
@@ -284,15 +284,15 @@ const products = ref([
 }
 
 @keyframes slideDown {
-  from {
-    
-    transform: translateY(-8%);
-  }
+    from {
 
-  to {
-    
-    transform: translateY(0%);
-  }
+        transform: translateY(-8%);
+    }
+
+    to {
+
+        transform: translateY(0%);
+    }
 }
 
 @media (min-width: 768px) {

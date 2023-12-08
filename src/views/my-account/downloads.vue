@@ -1,10 +1,10 @@
 <script setup>
-import Navbar from '../components/Navbar.vue';
-import Footer from '../components/Footer.vue';
-import AccountSideNavigation from "../components/AccountSideNavigation.vue"
+import Navbar from '../../components/Navbar.vue';
+import Footer from '../../components/Footer.vue';
+import AccountSideNavigation from "../../components/AccountSideNavigation.vue"
 import { ref } from 'vue';
 
-const orders = ref([])
+const downloads = ref([])
 </script>
 <template>
     <Navbar />
@@ -12,13 +12,13 @@ const orders = ref([])
         <div class="dashboard">
             <AccountSideNavigation class="navigation" />
             <section>
-                <div v-if="orders.length">
+                <div v-if="downloads.length">
 
                 </div>
-                <div else class="empty-order d-flex justify-content-between">
-                    No order has been made yet
+                <div else class="empty-download d-flex justify-content-between">
+                    No downloads available yet
                     <div class="d-flex justify-content-end">
-                        <button class="d-flex align-items-center justify-content-between">
+                        <button class="d-flex align-items-center">
                             <router-link to="/shop">Browse products</router-link>
                             <img src="@/assets/icons/arrow-right.svg" class="arrow-right">
                         </button>
@@ -60,7 +60,7 @@ const orders = ref([])
     color: #666666;
 }
 
-.empty-order {
+.empty-download {
     background-color: #00c0ab;
     padding: 1rem;
     height: fit-content;
@@ -74,7 +74,7 @@ const orders = ref([])
     margin: 0;
 }
 
-.empty-order button {
+.empty-download button {
     padding: 0.35rem 0.75rem;
     width: fit-content;
     font-size: 0.875rem;
@@ -83,23 +83,22 @@ const orders = ref([])
     transition: all 500ms ease;
 }
 
-.empty-order button:hover {
+.empty-download button:hover {
     background-color: #2ea3f2;
 }
 
-.empty-order .arrow-right {
-    opacity: 0;
+.empty-download .arrow-right {
+    display: none;
     width: 0;
     transition: all 500ms ease;
 }
 
-.empty-order button:hover .arrow-right {
-    opacity: 1;
+.empty-download button:hover .arrow-right {
+    display: block;
     width: fit-content;
-    transition: all 500ms ease;
 }
 
-.empty-order a {
+.empty-download a {
     text-decoration: none;
     color: white;
 }
@@ -109,7 +108,7 @@ const orders = ref([])
         padding: 1.5rem 3.5rem;
     }
 
-    .empty-order {
+    .empty-download {
         display: block;
         gap: 0;
     }
@@ -125,11 +124,11 @@ const orders = ref([])
         width: 40%;
     }
 
-    .empty-order {
+    .empty-download {
         font-size: 1.125rem;
     }
 
-    .empty-order button {
+    .empty-download button {
         font-size: 1rem;
     }
 }

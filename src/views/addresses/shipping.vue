@@ -1,10 +1,10 @@
 <script setup>
-import Navbar from '../components/Navbar.vue'
-import Footer from '../components/Footer.vue'
-import AccountSideNavigation from '../components/AccountSideNavigation.vue'
+import Navbar from '../../components/Navbar.vue'
+import Footer from '../../components/Footer.vue'
+import AccountSideNavigation from '../../components/AccountSideNavigation.vue'
 import { ref } from 'vue'
 
-const billingAddress = ref({
+const shippingAddress = ref({
     firstName: '',
     lastName: '',
     companyName: '',
@@ -14,8 +14,6 @@ const billingAddress = ref({
     subdistrict: '',
     streetAddress: '',
     postcode: '',
-    emailAddress: '',
-    phoneNumber: ''
 })
 
 </script>
@@ -26,20 +24,20 @@ const billingAddress = ref({
             <AccountSideNavigation class="navigation" />
             <section class="w-100">
                 <form @submit.prevent="">
-                    <h2>Billing Address</h2>
+                    <h2>Shipping Address</h2>
                     <div class="input-name w-100 mb-2">
-                        <div class="w-100 mb-2 lg-mb-0">
+                        <div class="w-100">
                             <label class="form-label">First name <span class=" text-danger">*</span></label>
-                            <input type="text" class="form-control w-100" v-model="billingAddress.firstName" required>
+                            <input type="text" class="form-control w-100" v-model="shippingAddress.firstName" required>
                         </div>
                         <div class="w-100">
                             <label class="form-label">Last name <span class=" text-danger">*</span></label>
-                            <input type="text" class="form-control w-100" v-model="billingAddress.lastName" required>
+                            <input type="text" class="form-control w-100" v-model="shippingAddress.lastName" required>
                         </div>
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Company name (optional)</label>
-                        <input type="text" class="form-control w-100" v-model="billingAddress.companyName">
+                        <input type="text" class="form-control w-100" v-model="shippingAddress.companyName">
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Country / Region <span class=" text-danger">*</span></label>
@@ -47,40 +45,32 @@ const billingAddress = ref({
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Province <span class=" text-danger">*</span></label>
-                        <select class="form-select border rounded-1" v-model="billingAddress.province">
+                        <select class="form-select border rounded-1" v-model="shippingAddress.province" required>
                             <option>test</option>
                             <option>test</option>
                         </select>
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Town / City <span class=" text-danger">*</span></label>
-                        <select class="form-select border rounded-1" v-model="billingAddress.city" required>
+                        <select class="form-select border rounded-1" v-model="shippingAddress.city" required>
                             <option>test</option>
                             <option>test</option>
                         </select>
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Subdistrict (optional)</label>
-                        <select class="form-select border rounded-1" v-model="billingAddress.subdistrict">
+                        <select class="form-select border rounded-1" v-model="shippingAddress.subdistrict">
                             <option>test</option>
                             <option>test</option>
                         </select>
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Street address <span class=" text-danger">*</span></label>
-                        <input type="text" class="form-control w-100" v-model="billingAddress.streetAddress" required>
+                        <input type="text" class="form-control w-100" v-model="shippingAddress.streetAddress" required>
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Postcode / ZIP <span class=" text-danger">*</span></label>
-                        <input type="text" class="form-control w-100" v-model="billingAddress.postcode" required>
-                    </div>
-                    <div class="w-100 mb-2">
-                        <label class="form-label">Phone <span class=" text-danger">*</span></label>
-                        <input type="text" class="form-control w-100" v-model="billingAddress.phoneNumber" required>
-                    </div>
-                    <div class="w-100 mb-2">
-                        <label class="form-label">Email address <span class=" text-danger">*</span></label>
-                        <input type="email" class="form-control w-100" v-model="billingAddress.emailAddress" required>
+                        <input type="text" class="form-control w-100" v-model="shippingAddress.postcode" required>
                     </div>
                     <button class="btn rounded-5 mt-3" type="submit">Save address</button>
                 </form>
@@ -97,9 +87,15 @@ const billingAddress = ref({
     font-family: 'Open Sans', Arial, sans-serif;
 }
 
+.dashboard section {
+    padding: 0 1rem 3rem 1rem;
+}
+
+
 .dashboard a {
     color: #2ea3f2;
 }
+
 
 .dashboard button {
     background-color: transparent;
