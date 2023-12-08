@@ -2,7 +2,8 @@
 import Navbar from '../../components/Navbar.vue'
 import Footer from '../../components/Footer.vue'
 import AccountSideNavigation from '../../components/AccountSideNavigation.vue'
-import { ref } from 'vue'
+import { ref, watch, computed } from 'vue'
+import 'vue-select/dist/vue-select.css';
 
 const shippingAddress = ref({
     firstName: '',
@@ -16,6 +17,60 @@ const shippingAddress = ref({
     postcode: '',
 })
 
+const provinces = [
+    {
+        code: 1,
+        name: 'Jawa Barat'
+    },
+    {
+        code: 2,
+        name: 'DKI Jakarta'
+    }
+]
+
+const cities = [
+    {
+        code: 1,
+        name: 'Bandung'
+    }, {
+        code: 2,
+        name: 'Jakarta Tengah'
+    }
+]
+
+const subdistricts = [
+    {
+        code: 1,
+        name: 'Bandung Selatan'
+    },
+    {
+        code: 2,
+        name: 'Jakarta Tengah Utara'
+    }
+]
+
+
+const selectedLocation = ref({
+    province: null,
+    city: null,
+    subdistrict: null
+})
+
+
+const computedSelectedLocation = computed(() => {
+    return Object.assign({}, selectedLocation.value)
+})
+
+watch(computedSelectedLocation, (newValue, oldValue) => {
+    if (newValue.province !== oldValue.province) {
+        selectedLocation.value.city = null;
+    }
+
+    if (newValue.city !== oldValue.city) {
+        selectedLocation.value.subdistrict = null;
+    }
+
+});
 </script>
 <template>
     <Navbar />
@@ -45,24 +100,26 @@ const shippingAddress = ref({
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Province <span class=" text-danger">*</span></label>
-                        <select class="form-select border rounded-1" v-model="shippingAddress.province" required>
-                            <option>test</option>
-                            <option>test</option>
-                        </select>
+                        <v-select label="name" :options="provinces" v-model="selectedLocation.province">
+                            <template #no-options="{}">
+                                Province not found
+                            </template></v-select>
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Town / City <span class=" text-danger">*</span></label>
-                        <select class="form-select border rounded-1" v-model="shippingAddress.city" required>
-                            <option>test</option>
-                            <option>test</option>
-                        </select>
+                        <v-select label="name" :options="cities" v-model="selectedLocation.city"
+                            :disabled="!selectedLocation.province">
+                            <template #no-options="{}">
+                                City not found
+                            </template></v-select>
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Subdistrict (optional)</label>
-                        <select class="form-select border rounded-1" v-model="shippingAddress.subdistrict">
-                            <option>test</option>
-                            <option>test</option>
-                        </select>
+                        <v-select label="name" :options="subdistricts" v-model="selectedLocation.subdistrict"
+                            :disabled="!selectedLocation.city">
+                            <template #no-options="{}">
+                                Subdistrict not found
+                            </template></v-select>
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Street address <span class=" text-danger">*</span></label>
