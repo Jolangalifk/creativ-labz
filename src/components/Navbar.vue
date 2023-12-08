@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { nextTick, onMounted, ref, watch } from 'vue';
 const isScrolled = ref(false)
 const showMenu = ref(false)
 
@@ -12,6 +12,23 @@ onMounted(() => {
             isScrolled.value = false
         }
     })
+})
+
+watch(showMenu, async (newValue) => {
+    await nextTick()
+    const navItemContainer = document.querySelector('nav > div')
+    let navBorderTimeout = null
+    if (!newValue) {
+        clearTimeout(navBorderTimeout)
+
+        navBorderTimeout = setTimeout(() => {
+            navItemContainer.classList.remove('nav-border');
+        }, 400);
+    } else if (newValue) {
+        clearTimeout(navBorderTimeout)
+
+        navItemContainer.classList.add('nav-border');
+    }
 })
 </script>
 <template>
@@ -96,7 +113,7 @@ nav div {
     padding-bottom: 0.7rem;
 }
 
-.show div {
+.nav-border {
     border-top: 3px solid #00c0ab;
 }
 
@@ -165,7 +182,7 @@ a.active-route {
         padding-bottom: 0;
     }
 
-    .show div {
+    .nav-border {
         border: none;
     }
 
