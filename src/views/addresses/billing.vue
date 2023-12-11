@@ -102,26 +102,38 @@ watch(computedSelectedLocation, (newValue, oldValue) => {
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Province <span class=" text-danger">*</span></label>
-                        <v-select label="name" :options="provinces" v-model="selectedLocation.province">
+                        <v-select label="name" :options="provinces" v-model="selectedLocation.province" :clearable="false">
                             <template #no-options="{}">
                                 Province not found
-                            </template></v-select>
+                            </template>
+                            <template #open-indicator="{ attributes }">
+                                <span v-bind="attributes"><img src="/src/assets/icons/arrow-down.svg"></span>
+                            </template>
+                        </v-select>
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Town / City <span class=" text-danger">*</span></label>
                         <v-select label="name" :options="cities" v-model="selectedLocation.city"
-                            :disabled="!selectedLocation.province">
+                            :disabled="!selectedLocation.province" :clearable="false">
                             <template #no-options="{}">
                                 City not found
-                            </template></v-select>
+                            </template>
+                            <template #open-indicator="{ attributes }">
+                                <span v-bind="attributes"><img src="/src/assets/icons/arrow-down.svg"></span>
+                            </template>
+                        </v-select>
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Subdistrict (optional)</label>
                         <v-select label="name" :options="subdistricts" v-model="selectedLocation.subdistrict"
-                            :disabled="!selectedLocation.city">
+                            :disabled="!selectedLocation.city" :clearable="false">
                             <template #no-options="{}">
                                 Subdistrict not found
-                            </template></v-select>
+                            </template>
+                            <template #open-indicator="{ attributes }">
+                                <span v-bind="attributes"><img src="/src/assets/icons/arrow-down.svg"></span>
+                            </template>
+                        </v-select>
                     </div>
                     <div class="w-100 mb-2">
                         <label class="form-label">Street address <span class=" text-danger">*</span></label>

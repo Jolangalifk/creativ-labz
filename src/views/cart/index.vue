@@ -165,21 +165,36 @@ const subdistricts = [
                                         placeholder="Country" :clearable="false">
                                         <template #no-options="{}">
                                             Province not found
-                                        </template></v-select>
+                                        </template> <template #open-indicator="{ attributes }">
+                                            <span v-bind="attributes"><img src="/src/assets/icons/arrow-down.svg"></span>
+                                        </template>
+                                    </v-select>
                                     <v-select label="name" :options="provinces" class="style-chooser" placeholder="Province"
                                         :clearable="false">
                                         <template #no-options="{}">
                                             Province not found
-                                        </template></v-select>
+                                        </template>
+                                        <template #open-indicator="{ attributes }">
+                                            <span v-bind="attributes"><img src="/src/assets/icons/arrow-down.svg"></span>
+                                        </template>
+                                    </v-select>
                                     <v-select label="name" :options="cities" class="style-chooser" placeholder="Town / City"
                                         :clearable="false">
                                         <template #no-options="{}">
                                             City not found
-                                        </template></v-select>
+                                        </template>
+                                        <template #open-indicator="{ attributes }">
+                                            <span v-bind="attributes"><img src="/src/assets/icons/arrow-down.svg"></span>
+                                        </template>
+                                    </v-select>
                                     <v-select label="name" :options="subdistricts" class="style-chooser"
                                         placeholder="Subdistrict" :clearable="false">
                                         <template #no-options="{}">
                                             Subdistrict not found
+                                        </template>
+
+                                        <template #open-indicator="{ attributes }">
+                                            <span v-bind="attributes"><img src="/src/assets/icons/arrow-down.svg"></span>
                                         </template></v-select>
                                     <input type="text" class="form-control" placeholder="Postcode / ZIP">
                                     <button class="w-min mt-2">Update</button>
@@ -694,5 +709,15 @@ input:focus {
     font-size: 0.875rem;
     line-height: 150%;
     color: #999;
+}
+
+.style-chooser .vs__open-indicator {
+    padding: 0;
+    margin: 0;
+}
+
+.style-chooser .vs__open-indicator img {
+    padding: 0;
+    margin: 0;
 }
 </style>
