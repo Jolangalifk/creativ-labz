@@ -102,14 +102,14 @@ const newsAndEvents = ref([{
         </div>
         <section class="news-events-container mt-5 mx-auto">
             <template v-for="(item, index) in newsAndEvents" :key="index">
-                <div class="news-event-item d-flex flex-column">
+                <router-link :to="'/' + 'slug'" class="news-event-item d-flex flex-column">
                     <img :src="item.image_url" class="d-block img-fluid">
                     <div class="news-event-teks">
                         <h2>{{ item.title }}</h2>
                         <p>{{ item.author }} | {{ item.createdAt }} | {{ item.category }}</p>
                         <p>{{ item.text }}</p>
                     </div>
-                </div>
+                </router-link>>
             </template>
         </section>
     </main>
@@ -198,6 +198,10 @@ const newsAndEvents = ref([{
     columns: 1;
     gap: 4rem;
     width: 80%;
+}
+
+a.news-event-item {
+    text-decoration: none;
 }
 
 .news-event-item {
