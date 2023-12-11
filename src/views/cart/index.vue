@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar.vue';
 import Footer from '../../components/Footer.vue';
 import { ref, computed } from 'vue';
 import { toRupiah } from '../../utils';
+import 'vue-select/dist/vue-select.css';
 
 const cartItems = ref([
     {
@@ -29,6 +30,52 @@ const cartTotalPrice = computed(() => {
         return accumulator + currentValue.price * currentValue.quantity;
     }, 0)
 })
+
+const showAddressForm = ref(false)
+
+const countries = [
+    {
+        code: 62,
+        name: 'Indonesia'
+    }
+]
+
+const country = {
+    code: 62,
+    name: 'Indonesia'
+}
+
+const provinces = [
+    {
+        code: 1,
+        name: 'Jawa Barat'
+    },
+    {
+        code: 2,
+        name: 'DKI Jakarta'
+    }
+]
+
+const cities = [
+    {
+        code: 1,
+        name: 'Bandung'
+    }, {
+        code: 2,
+        name: 'Jakarta Tengah'
+    }
+]
+
+const subdistricts = [
+    {
+        code: 1,
+        name: 'Bandung Selatan'
+    },
+    {
+        code: 2,
+        name: 'Jakarta Tengah Utara'
+    }
+]
 </script>
 
 <template>
@@ -100,17 +147,48 @@ const cartTotalPrice = computed(() => {
                 <table>
                     <tbody>
                         <tr>
-                            <th>Subtotal</th>
+                            <th>Subtotal:</th>
                             <td>{{ toRupiah(cartTotalPrice) }}</td>
                         </tr>
                         <tr>
-                            <th>Shipping</th>
-                            <td>No shipping options were found for <span>DKI Jakarta</span>.
+                            <th class="th-lg">Shipping</th>
+                            <!-- <td>No shipping options were found for <span>DKI Jakarta</span>.
                                 <router-link to="/my-account/edit-address/shipping">Enter a different address</router-link>
+                            </td> -->
+                            <td class="address-form" colspan="5">
+                            <th class="p-0 m-0">Shipping:</th>Enter your address to view shipping options.
+                            <router-link to="/cart" @click="showAddressForm = !showAddressForm">Calculate
+                                shipping</router-link>
+                            <section class="address-form-container mt-2" :class="{ 'show': showAddressForm }">
+                                <div>
+                                    <v-select label="name" :options="countries" v-model="country" class="style-chooser"
+                                        placeholder="Country" :clearable="false">
+                                        <template #no-options="{}">
+                                            Province not found
+                                        </template></v-select>
+                                    <v-select label="name" :options="provinces" class="style-chooser" placeholder="Province"
+                                        :clearable="false">
+                                        <template #no-options="{}">
+                                            Province not found
+                                        </template></v-select>
+                                    <v-select label="name" :options="cities" class="style-chooser" placeholder="Town / City"
+                                        :clearable="false">
+                                        <template #no-options="{}">
+                                            City not found
+                                        </template></v-select>
+                                    <v-select label="name" :options="subdistricts" class="style-chooser"
+                                        placeholder="Subdistrict" :clearable="false">
+                                        <template #no-options="{}">
+                                            Subdistrict not found
+                                        </template></v-select>
+                                    <input type="text" class="form-control" placeholder="Postcode / ZIP">
+                                    <button class="w-min mt-2">Update</button>
+                                </div>
+                            </section>
                             </td>
                         </tr>
                         <tr>
-                            <th>Total</th>
+                            <th>Total:</th>
                             <td><span>{{ toRupiah(cartTotalPrice) }}</span></td>
                         </tr>
                     </tbody>
@@ -398,6 +476,57 @@ input:focus {
     display: none;
 }
 
+.address-form-container {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: 500ms all ease-out;
+}
+
+.address-form-container.show {
+    grid-template-rows: 1fr !important;
+    padding-bottom: 0.7rem;
+}
+
+.address-form-container>div {
+    overflow: hidden;
+}
+
+.address-form-container * {
+    margin-bottom: 0.5rem;
+}
+
+.total-wrapper button.w-min {
+    width: min-content;
+}
+
+.address-form-container .form-control {
+    background-color: #eeeeee;
+    padding: 1.3rem 1.6rem;
+    border-radius: 0;
+    border: none;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 150%;
+    color: #3e3e3e;
+}
+
+.address-form-container .form-control:focus {
+    box-shadow: none;
+}
+
+.address-form-container .form-control::placeholder {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 150%;
+    color: #999;
+}
+
+.total-wrapper .th-lg {
+    display: none;
+}
+
 @media (min-width: 425px) {
     main {
         padding: 2rem;
@@ -495,6 +624,15 @@ input:focus {
         overflow: hidden;
         border-radius: 0;
     }
+
+
+    .total-wrapper .th-lg {
+        display: block;
+    }
+
+    .total-wrapper table tbody tr .address-form th {
+        display: none;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -524,5 +662,37 @@ input:focus {
     main {
         padding: 7rem 10rem;
     }
+}
+</style>
+
+<style>
+.style-chooser.v-select {
+    background-color: #eeeeee;
+    outline: none;
+    border-radius: 0;
+    font-weight: 800;
+}
+
+.style-chooser .vs__dropdown-toggle {
+    background-color: #eeeeee;
+    padding: 1rem;
+    border-radius: none;
+    border: none;
+}
+
+.style-chooser .vs__dropdown-toggle .vs__selected-options .vs__selected {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 150%;
+    color: #3e3e3e;
+}
+
+.style-chooser .vs__search::placeholder {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 150%;
+    color: #999;
 }
 </style>
