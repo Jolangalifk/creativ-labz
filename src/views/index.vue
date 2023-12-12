@@ -131,10 +131,10 @@ onUnmounted(() => {
       </div>
     </div>
   </main>
-  <section class="alert-modal-container" v-show="showAlertModal">
+  <section class="alert-modal-container" @click="showAlertModal = false" v-show="showAlertModal">
     <div class="alert-modal">
       <img class="close-btn p-2" tabindex="0" src="@/assets/icons/close.png" @click="showAlertModal = false">
-      <img src="@/assets/images/home/18plus-banner.png" alt="18+ warning" class="alert-image">
+      <img src="@/assets/images/home/18plus-banner.png" alt="18+ warning" class="alert-image" @click.stop>
     </div>
   </section>
   <Footer />
@@ -413,7 +413,7 @@ onUnmounted(() => {
 
 .alert-modal-container {
   position: fixed;
-  z-index: 2000;
+  z-index: 3001;
   width: 100%;
   height: 100%;
   top: 0;
