@@ -1,14 +1,35 @@
 <script setup>
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const showAlertModal = ref(true)
+
+const parallaxOffset = ref(0);
+
+const handleScroll = () => {
+  requestAnimationFrame(() => {
+    const scrollY = window.scrollY;
+    parallaxOffset.value = `${scrollY / 3.5}`;
+  })
+
+};
+
+onMounted(() => {
+  if (!window) return
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  if (!window) return
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <template>
   <Navbar />
   <main class="bg-black" id="home">
+
     <div class="creativ-labz">
       <div class="information">
         <h1>Creativ Labz</h1>
@@ -20,7 +41,8 @@ const showAlertModal = ref(true)
       </div>
     </div>
     <div class="product">
-      <img src="@/assets/images/contact/natural-marble-pattern-background-1-scaled.jpg" class="background">
+      <img src="@/assets/images/contact/natural-marble-pattern-background-1-scaled.jpg" class="background"
+        :style="{ transform: `translateY(${parallaxOffset}px)` }">
       <div class="wrapper-product">
         <div class="text-title d-flex flex-row">
           <p>SHOP PRODUCTS</p>
@@ -92,7 +114,8 @@ const showAlertModal = ref(true)
       </div>
     </div>
     <div class="about-us">
-      <img src="@/assets/images/contact/natural-marble-pattern-background-1-scaled.jpg" class="background">
+      <img src="@/assets/images/contact/natural-marble-pattern-background-1-scaled.jpg" class="background"
+        :style="{ transform: `translateY(${parallaxOffset}px)` }">
       <div class="wrapper-about">
         <div class="d-flex flex-column">
           <span>About Us</span>
@@ -194,13 +217,18 @@ const showAlertModal = ref(true)
 
 .background {
   position: absolute;
-  height: 100%;
+  height: 150vh;
   width: 100%;
   object-fit: cover;
   z-index: -1;
-  left: 0;
-  top: 0;
+  inset: 0;
+  top: -200px;
   transform: translateZ(0px) scale(1);
+}
+
+.about-us .background {
+  /* top: -600px; */
+  top: -150vh;
 }
 
 .wrapper-product {
@@ -444,6 +472,13 @@ const showAlertModal = ref(true)
   transition-duration: 300ms;
 }
 
+
+@media (min-width: 768px) {
+  .background {
+    height: 170vh;
+  }
+}
+
 @media only screen and (max-width: 767px) {
   .creativ-labz {
     padding: 3rem 2rem;
@@ -452,7 +487,7 @@ const showAlertModal = ref(true)
   }
 
   .information {
-    width: 100%;    
+    width: 100%;
   }
 
   .information h1 {
@@ -703,6 +738,38 @@ const showAlertModal = ref(true)
   .image-liquid img {
     width: 100%;
     object-fit: contain;
+  }
+}
+
+@media (min-width: 981px) {
+  .background {
+    height: 140vh;
+    top: -300px;
+  }
+
+  .about-us .background {
+    top: -600px;
+  }
+
+}
+
+@media (min-width: 1240px) {
+  .background {
+    height: 110vh;
+  }
+
+  .about-us .background {
+    top: -500px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .background {
+    top: -500px;
+  }
+
+  .about-us .background {
+    top: -600px;
   }
 }
 </style>
