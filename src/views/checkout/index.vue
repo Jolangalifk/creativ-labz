@@ -272,15 +272,19 @@ h3 {
     padding: 1rem;
     border-radius: 0.3rem;
     margin-bottom: 2.5rem;
-    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
+    animation: growDown 300ms ease-in-out forwards
 }
 
-.dropdown-lc.show {
-    max-height: 500px; /* Sesuaikan dengan tinggi maksimum dropdown */
-    opacity: 1;
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+    80% {
+        transform: scaleY(1.1)
+    }
+    100% {
+        transform: scaleY(1)
+    }
 }
 
 .dropdown-lc .button {
@@ -383,7 +387,7 @@ span {
     width: 100%;
     border-radius: 0.3rem;
     margin-bottom: 2.5rem;
-    transition: all 0.3s ease-in-out;
+    animation: growDown 300ms ease-in-out forwards
 }
 
 .dropdown-billing .label-full {
