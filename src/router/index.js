@@ -69,7 +69,7 @@ const router = createRouter({
       component: () => import('../views/product/_slug/index.vue')
     },
     {
-      path: '/detail-news-events/:id',
+      path: '/:slug',
       name: 'DetailNewsEvents',
       component: () => import('../views/news-event/_slug/index.vue')
     },

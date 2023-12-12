@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { nextTick, onMounted, ref, watch } from 'vue';
 const isScrolled = ref(false)
 const showMenu = ref(false)
 
@@ -12,6 +12,23 @@ onMounted(() => {
             isScrolled.value = false
         }
     })
+})
+
+watch(showMenu, async (newValue) => {
+    await nextTick()
+    const navItemContainer = document.querySelector('nav > div')
+    let navBorderTimeout = null
+    if (!newValue) {
+        clearTimeout(navBorderTimeout)
+
+        navBorderTimeout = setTimeout(() => {
+            navItemContainer.classList.remove('nav-border');
+        }, 400);
+    } else if (newValue) {
+        clearTimeout(navBorderTimeout)
+
+        navItemContainer.classList.add('nav-border');
+    }
 })
 </script>
 <template>
@@ -96,12 +113,12 @@ nav div {
     padding-bottom: 0.7rem;
 }
 
-.show div {
+.nav-border {
     border-top: 3px solid #00c0ab;
 }
 
 nav a {
-    color: #999999;
+    color: rgba(0, 0, 0, 0.6);
     font-weight: 600;
     font-size: 0.875rem;
     text-decoration: none;
@@ -114,7 +131,15 @@ nav a {
 }
 
 nav a:hover {
+    background-color: rgba(0, 0, 0, .03);
+}
+
+nav a:hover {
     color: #666666;
+}
+
+nav>div a:first-child {
+    margin-top: 0.75rem;
 }
 
 .btn-container {
@@ -123,17 +148,13 @@ nav a:hover {
     filter: brightness(0);
 }
 
-a.active-route {
-    color: #00c0ab;
-}
-
 @media (min-width: 768px) {
     #header {
         padding: 1rem 5.5rem;
     }
 }
 
-@media (min-width:1024px) {
+@media (min-width:992px) {
     #header {
         background-color: black;
         position: fixed;
@@ -165,7 +186,7 @@ a.active-route {
         padding-bottom: 0;
     }
 
-    .show div {
+    .nav-border {
         border: none;
     }
 
@@ -183,10 +204,23 @@ a.active-route {
         font-weight: 600;
         width: auto;
         padding: 0;
+        color: #999999;
+    }
+
+    nav a:hover {
+        background-color: transparent;
+    }
+
+    nav>div a:first-child {
+        margin-top: 0;
     }
 
     .btn-container {
         display: none;
+    }
+
+    a.active-route {
+        color: #00c0ab;
     }
 }
 </style>

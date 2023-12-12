@@ -69,14 +69,13 @@ const newsAndEvents = ref([{
 </script>
 <template>
     <Navbar />
-    <main class="bg-black pt-5" id="news-events">
+    <main class="bg-black" id="news-events">
         <h1>News & Events</h1>
-        <div id="carouselExampleIndicators" class="carousel slide w-75 mx-auto" data-bs-ride="carousel">
+        <div id="newsEventCarousel" class="carousel carousel-fade mx-auto" data-bs-interval="false">
             <div class="carousel-indicators">
-                <button v-for="(item, index) in carouselData" :key="index" type="button"
-                    data-bs-target="#carouselExampleIndicators" :data-bs-slide-to="index.toString()"
-                    class="carousel-navigation" :class="{ 'active': index === 0 }" :aria-current="index === 0"
-                    :aria-label="'Slide' + (index + 1)"></button>
+                <button v-for="(item, index) in carouselData" :key="index" type="button" data-bs-target="#newsEventCarousel"
+                    :data-bs-slide-to="index.toString()" class="carousel-navigation" :class="{ 'active': index === 0 }"
+                    :aria-current="index === 0" :aria-label="'Slide' + (index + 1)"></button>
             </div>
             <div class="carousel-inner">
                 <div v-for="(item, index) in  carouselData " :key="index"
@@ -92,40 +91,46 @@ const newsAndEvents = ref([{
                 </div>
 
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#newsEventCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#newsEventCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
         <section class="news-events-container mt-5 mx-auto">
             <template v-for="(item, index) in newsAndEvents" :key="index">
-                <div class="news-event-item d-flex flex-column">
+                <router-link :to="'/' + 'slug'" class="news-event-item d-flex flex-column">
                     <img :src="item.image_url" class="d-block img-fluid">
                     <div class="news-event-teks">
                         <h2>{{ item.title }}</h2>
                         <p>{{ item.author }} | {{ item.createdAt }} | {{ item.category }}</p>
                         <p>{{ item.text }}</p>
                     </div>
-                </div>
+                </router-link>>
             </template>
         </section>
     </main>
     <Footer />
 </template>
 <style scoped>
+#news-events {
+    padding-top: 30px;
+}
+
 #news-events h1 {
     font-family: 'Quattrocento', 'Times New Roman', Times, serif;
     color: white;
     font-size: 2rem;
     font-weight: 700;
     text-align: center;
-    margin: 4rem 0 3rem 0;
+    margin: 2rem 0 3rem 0;
+}
+
+#newsEventCarousel {
+    width: 80%;
 }
 
 .carousel-navigation {
@@ -192,7 +197,11 @@ const newsAndEvents = ref([{
 .news-events-container {
     columns: 1;
     gap: 4rem;
-    width: 75%;
+    width: 80%;
+}
+
+a.news-event-item {
+    text-decoration: none;
 }
 
 .news-event-item {
@@ -230,6 +239,22 @@ const newsAndEvents = ref([{
     color: #666666;
 }
 
+.carousel-item.active .carousel-content>div {
+    animation: fadeUp 1200ms ease-in-out;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
 @media (min-width: 768px) {
     .news-events-container {
         columns: 2;
@@ -241,12 +266,21 @@ const newsAndEvents = ref([{
 }
 
 @media (min-width: 1024px) {
+    #news-events {
+        padding-top: 60px;
+    }
+
     #news-events h1 {
         font-size: 4.1rem;
+        margin-top: 4rem;
     }
 
     .carousel-content h2 {
         font-size: 1.75rem;
+    }
+
+    .carousel-item {
+        height: 500px;
     }
 }
 

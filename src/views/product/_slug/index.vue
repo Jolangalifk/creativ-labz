@@ -3,6 +3,7 @@ import Footer from '../../../components/Footer.vue';
 import Navbar from '../../../components/Navbar.vue';
 import PostRecomendations from '../../../components/PostRecomendations.vue';
 import StarRating from '../../../components/StarRating.vue';
+import Gallery from '../../../components/Gallery.vue';
 
 import { ref } from 'vue';
 import { toRupiah } from '../../../utils';
@@ -30,6 +31,13 @@ const product = ref({
     tags: ['creativelabz', 'freebase', 'menthol', 'screwbacco'],
     weight: 800, //gr
 })
+
+const productImage = ref([{
+    largeURL: '/src/assets/images/products/product-1-full.webp',
+    thumbnailURL: '/src/assets/images/products/product-1-full.webp',
+    width: 1875,
+    height: 2500,
+}])
 
 const reviews = ref([])
 
@@ -67,6 +75,7 @@ const selectedTab = ref('decs')
 </script>
 <template>
     <Navbar />
+
     <main id="main-content">
         <section class=" product-container">
             <div class="d-flex align-items-center flex-wrap custom-breadcrumb">
@@ -81,7 +90,10 @@ const selectedTab = ref('decs')
             <div class="product">
                 <div class="">
                     <div @mousemove="(event) => handleMouseMove(event)" :style="imageStyle" class="img-container">
-                        <img :src="product.image_url" class="img-fluid">
+                        <!-- <img :src="product.image_url" class="img-fluid"> -->
+                        <div class="magnify"><img src="@/assets/icons/search.png">
+                        </div>
+                        <Gallery galleryID="product-image" :images="productImage" />
                     </div>
                 </div>
                 <div class="mt-3 mt-lg-0">
@@ -236,18 +248,35 @@ const selectedTab = ref('decs')
 .img-container {
     width: fit-content;
     background-repeat: no-repeat;
+    position: relative;
 }
 
-.img-container:hover img {
+
+#product-image:hover {
     opacity: 0;
 }
 
-.img-container img {
-    display: block;
-    width: 100%;
-    pointer-events: none;
+.magnify:hover {
+    opacity: 1;
 }
 
+.magnify {
+    background-color: white;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 10px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.magnify img {
+    width: 16px;
+    height: 16px;
+}
 
 .product h1 {
     font-size: 1.25rem;
