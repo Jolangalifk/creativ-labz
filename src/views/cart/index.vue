@@ -87,7 +87,9 @@ const cartTotalPrice = computed(() => {
                     <div class="edit-cart">
                         <div class="coupon">
                             <input type="text" placeholder="Coupon code">
-                            <button>Apply coupon</button>
+                            <button>Apply coupon
+                                <img src="@/assets/icons/arrow-right.svg" class="arrow-right">
+                            </button>
                         </div>
                         <div class="update-cart">
                             <button>Update cart</button>
@@ -115,7 +117,9 @@ const cartTotalPrice = computed(() => {
                         </tr>
                     </tbody>
                 </table>
-                <button>Proceed to checkout</button>
+                <router-link to="/checkout"><button>Proceed to checkout
+                    <img src="@/assets/icons/arrow-right.svg" class="arrow-right">
+                </button></router-link>
             </div>
         </div>
     </main>
@@ -276,6 +280,24 @@ main h1 {
     padding: 0.5rem 1rem;
 }
 
+.cart-detail .wrapper-tabel .edit-cart .coupon button:hover {
+    border-radius: 0;
+    background-color: #00B0BA;
+    transition: all 200ms ease;
+}
+
+.coupon button:hover .arrow-right {
+    opacity: 1;
+    width: fit-content;
+    transition: all 500ms ease;
+}
+
+.coupon .arrow-right {
+    opacity: 0;
+    width: 0;
+    transition: all 500ms ease;
+}
+
 .cart-detail .wrapper-tabel .edit-cart .update-cart button {
     width: 150px;
     height: 40px;
@@ -355,6 +377,24 @@ main h1 {
     color: #fff;
     cursor: pointer;
     border-radius: 50px;
+}
+
+.total-wrapper button:hover {
+    background-color: #00B0BA;
+    border-radius: 0;
+    transition: all 200ms ease;
+}
+
+.total-wrapper button:hover .arrow-right {
+    opacity: 1;
+    width: fit-content;
+    transition: all 500ms ease;
+}
+
+.total-wrapper .arrow-right {
+    opacity: 0;
+    width: 0;
+    transition: all 500ms ease;
 }
 
 .cart-detail .table tbody tr th {

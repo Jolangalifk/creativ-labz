@@ -146,6 +146,7 @@ const paymentOptions = [
 .button-order button:hover {
     background-color: #00B0BA;
     border-radius: 0;
+    transition: all 200ms ease;
 }
 
 .button-order button:hover .arrow-right {

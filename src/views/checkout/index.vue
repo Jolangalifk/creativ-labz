@@ -32,7 +32,7 @@ const shipToDifferentAddress = ref(false);
                 <div class="module-inner">
                     <p>Returning customer?<a href="#" @click="toggleLoginDropdown">Click here to login</a></p>
                 </div>
-                <form v-if="showLoginDropdown" class="dropdown-lc">
+                <form v-if="showLoginDropdown" class="dropdown-lc" :class="{ 'show': showLoginDropdown }">
                     <p>If you have shopped with us before, please enter your details below. If you are a new customer,
                         please proceed to the Billing section.</p>
                     <div class="name">
@@ -61,7 +61,7 @@ const shipToDifferentAddress = ref(false);
                 <div class="module-inner">
                     <p>Have a coupon?<a href="#" @click="toggleCouponDropdown">Click here to enter your code</a></p>
                 </div>
-                <form v-if="showCouponDropdown" class="dropdown-lc">
+                <form v-if="showCouponDropdown" class="dropdown-lc" :class="{ 'show': showCouponDropdown }">
                     <p>If you have a coupon code, please apply it below.</p>
                     <div class="name">
                         <div class="name">
@@ -272,6 +272,15 @@ h3 {
     padding: 1rem;
     border-radius: 0.3rem;
     margin-bottom: 2.5rem;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.dropdown-lc.show {
+    max-height: 500px; /* Sesuaikan dengan tinggi maksimum dropdown */
+    opacity: 1;
 }
 
 .dropdown-lc .button {
@@ -374,6 +383,7 @@ span {
     width: 100%;
     border-radius: 0.3rem;
     margin-bottom: 2.5rem;
+    transition: all 0.3s ease-in-out;
 }
 
 .dropdown-billing .label-full {
