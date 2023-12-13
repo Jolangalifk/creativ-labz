@@ -227,7 +227,6 @@ onUnmounted(() => {
 }
 
 .about-us .background {
-  /* top: -600px; */
   top: -150vh;
 }
 
@@ -375,7 +374,7 @@ onUnmounted(() => {
   flex-direction: row;
   width: 100%;
   color: white;
-  margin: 8rem 12rem;
+  margin: 7rem 7rem;
   gap: 12rem;
 }
 
@@ -546,6 +545,10 @@ onUnmounted(() => {
     object-fit: contain;
   }
 
+  .item-product .overlay>img {
+    width: 25px;
+  }
+
   .item-product h2 {
     font-family: 'poppins';
     font-size: 1rem;
@@ -583,7 +586,7 @@ onUnmounted(() => {
   }
 
   .wrapper-about {
-    margin: 4rem 2.5rem;
+    margin: 4rem 2.8rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -616,7 +619,7 @@ onUnmounted(() => {
 
 @media (min-width: 767px) and (max-width: 980px) {
   .creativ-labz {
-    padding: 8rem 5rem;
+    padding: 5rem 5rem;
   }
 
   .information {
@@ -667,11 +670,10 @@ onUnmounted(() => {
     margin-bottom: 0;
   }
 
-  .item-product img {
+  .item-product .image-product>img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    margin-bottom: 1rem;
   }
 
   .item-product h2 {
@@ -751,6 +753,9 @@ onUnmounted(() => {
     top: -600px;
   }
 
+  /* .wrapper-about {
+    margin: ;
+  } */
 }
 
 @media (min-width: 1240px) {
@@ -759,7 +764,11 @@ onUnmounted(() => {
   }
 
   .about-us .background {
-    top: -500px;
+    top: -600px;
+  }
+
+  .wrapper-about {
+    margin: 8rem 10rem;
   }
 }
 
