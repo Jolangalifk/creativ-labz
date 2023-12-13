@@ -18,7 +18,7 @@ const paymentOptions = [
                 <input class="form-check-input" type="radio" :name="radioGroupName" :id="'flexRadioDefault' + index"
                     :value="option.value" v-model="selectedOption" />
                 <label class="form-check-label" :for="'flexRadioDefault' + index">
-                    {{ option.label }} 
+                    {{ option.label }}
                     <div v-if="option.value === 'online_payment'" class="payment-image">
                         <img src="@/assets/images/payment/midtrans.png" alt="">
                     </div>
@@ -121,9 +121,11 @@ const paymentOptions = [
     0% {
         transform: scaleY(0)
     }
+
     80% {
         transform: scaleY(1.1)
     }
+
     100% {
         transform: scaleY(1)
     }
@@ -155,24 +157,23 @@ const paymentOptions = [
     align-items: center;
     justify-content: center;
     padding: 0.3em 1em 0.3em 1em;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-order button:hover {
     background-color: #00B0BA;
     border-radius: 0;
-    transition: all 200ms ease;
 }
 
 .button-order button:hover .arrow-right {
     opacity: 1;
     width: fit-content;
-    transition: all 500ms ease;
 }
 
 .button-order .arrow-right {
     opacity: 0;
     width: 0;
-    transition: all 500ms ease;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-order button p {

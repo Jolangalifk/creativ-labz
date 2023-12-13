@@ -80,23 +80,22 @@ const orders = ref([])
     font-size: 0.875rem;
     line-height: 185%;
     font-weight: 500;
-    transition: all 500ms ease;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .empty-order button:hover {
-    background-color: #2ea3f2;
+    background-color: #00B0BA;
 }
 
 .empty-order .arrow-right {
     opacity: 0;
     width: 0;
-    transition: all 500ms ease;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .empty-order button:hover .arrow-right {
     opacity: 1;
     width: fit-content;
-    transition: all 500ms ease;
 }
 
 .empty-order a {

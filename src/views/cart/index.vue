@@ -211,8 +211,8 @@ const subdistricts = [
                     </tbody>
                 </table>
                 <router-link to="/checkout"><button>Proceed to checkout
-                    <img src="@/assets/icons/arrow-right.svg" class="arrow-right">
-                </button></router-link>
+                        <img src="@/assets/icons/arrow-right.svg" class="arrow-right">
+                    </button></router-link>
             </div>
         </div>
     </main>
@@ -371,24 +371,23 @@ main h1 {
     font-weight: 500;
     border-radius: 50px;
     padding: 0.5rem 1rem;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cart-detail .wrapper-tabel .edit-cart .coupon button:hover {
     border-radius: 0;
     background-color: #00B0BA;
-    transition: all 200ms ease;
 }
 
 .coupon button:hover .arrow-right {
     opacity: 1;
     width: fit-content;
-    transition: all 500ms ease;
 }
 
 .coupon .arrow-right {
     opacity: 0;
     width: 0;
-    transition: all 500ms ease;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cart-detail .wrapper-tabel .edit-cart .update-cart button {
@@ -470,24 +469,23 @@ main h1 {
     color: #fff;
     cursor: pointer;
     border-radius: 50px;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .total-wrapper button:hover {
     background-color: #00B0BA;
     border-radius: 0;
-    transition: all 200ms ease;
 }
 
 .total-wrapper button:hover .arrow-right {
     opacity: 1;
     width: fit-content;
-    transition: all 500ms ease;
 }
 
 .total-wrapper .arrow-right {
     opacity: 0;
     width: 0;
-    transition: all 500ms ease;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cart-detail .table tbody tr th {

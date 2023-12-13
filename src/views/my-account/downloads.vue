@@ -80,17 +80,17 @@ const downloads = ref([])
     font-size: 0.875rem;
     line-height: 185%;
     font-weight: 500;
-    transition: all 500ms ease;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .empty-download button:hover {
-    background-color: #2ea3f2;
+    background-color: #00B0BA;
 }
 
 .empty-download .arrow-right {
     display: none;
     width: 0;
-    transition: all 500ms ease;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .empty-download button:hover .arrow-right {
