@@ -81,6 +81,9 @@ const downloads = ref([])
     line-height: 185%;
     font-weight: 500;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .empty-download button:hover {
@@ -88,14 +91,16 @@ const downloads = ref([])
 }
 
 .empty-download .arrow-right {
-    display: none;
+    opacity: 0;
     width: 0;
+    margin-left: -0.5rem;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .empty-download button:hover .arrow-right {
-    display: block;
+    opacity: 1;
     width: fit-content;
+    margin-left: 0;
 }
 
 .empty-download a {

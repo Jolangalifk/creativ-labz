@@ -81,6 +81,9 @@ const orders = ref([])
     line-height: 185%;
     font-weight: 500;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .empty-order button:hover {
@@ -90,12 +93,14 @@ const orders = ref([])
 .empty-order .arrow-right {
     opacity: 0;
     width: 0;
+    margin-left: -0.5rem;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .empty-order button:hover .arrow-right {
     opacity: 1;
     width: fit-content;
+    margin-left: 0;
 }
 
 .empty-order a {

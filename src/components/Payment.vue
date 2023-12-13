@@ -158,6 +158,9 @@ const paymentOptions = [
     justify-content: center;
     padding: 0.3em 1em 0.3em 1em;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .button-order button:hover {
@@ -168,11 +171,13 @@ const paymentOptions = [
 .button-order button:hover .arrow-right {
     opacity: 1;
     width: fit-content;
+    margin-left: 0;
 }
 
 .button-order .arrow-right {
     opacity: 0;
     width: 0;
+    margin-left: -0.5rem;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 

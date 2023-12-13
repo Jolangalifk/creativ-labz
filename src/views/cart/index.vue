@@ -220,6 +220,10 @@ const subdistricts = [
 </template>
 
 <style scoped>
+a {
+    text-decoration: none;
+}
+
 main {
     min-height: 100vh;
     background-image: url('/src/assets/images/cart/abstract-space-wallpaper-background-dark-smoke-design-scaled.jpg');
@@ -372,6 +376,9 @@ main h1 {
     border-radius: 50px;
     padding: 0.5rem 1rem;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .cart-detail .wrapper-tabel .edit-cart .coupon button:hover {
@@ -382,11 +389,13 @@ main h1 {
 .coupon button:hover .arrow-right {
     opacity: 1;
     width: fit-content;
+    margin-left: 0;
 }
 
 .coupon .arrow-right {
     opacity: 0;
     width: 0;
+    margin-left: -0.5rem;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -470,6 +479,10 @@ main h1 {
     cursor: pointer;
     border-radius: 50px;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .total-wrapper button:hover {
@@ -480,11 +493,13 @@ main h1 {
 .total-wrapper button:hover .arrow-right {
     opacity: 1;
     width: fit-content;
+    margin-left: 0;
 }
 
 .total-wrapper .arrow-right {
     opacity: 0;
     width: 0;
+    margin-left: -0.5rem;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
