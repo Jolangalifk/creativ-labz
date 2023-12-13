@@ -28,7 +28,9 @@ import Footer from '../../components/Footer.vue';
                             placeholder="Message"></textarea>
                     </div>
                     <div class="contact-button">
-                        <button type="submit" class="btn rounded-5">SUBMIT</button>
+                        <button type="submit" class="btn rounded-5">SUBMIT
+                            <img src="@/assets/icons/arrow-right.svg" class="arrow-right">
+                        </button>
                     </div>
                 </form>
             </div>
@@ -187,7 +189,7 @@ import Footer from '../../components/Footer.vue';
     justify-content: flex-end;
 }
 
-.contact-button .btn {
+.contact-button button {
     width: 75%;
     padding: 0.7rem 1rem;
     background-color: #00c0ab;
@@ -195,6 +197,18 @@ import Footer from '../../components/Footer.vue';
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 1px;
+}
+
+.contact-button button:hover .arrow-right {
+    opacity: 1;
+    width: fit-content;
+    transition: all 1000ms ease;
+}
+
+.contact-button .arrow-right {
+    opacity: 0;
+    width: 0;
+    transition: all 500ms ease;
 }
 
 .contact form button {
@@ -319,6 +333,10 @@ import Footer from '../../components/Footer.vue';
     font-size: 1rem;
     font-weight: 500;
     border: none;
+}
+
+.visit .text button:hover {
+    background-color: #EF8451;
 }
 
 .visit .working-hours {

@@ -258,6 +258,19 @@ span {
     flex-direction: column;
     width: 100%;
     margin-bottom: 1rem;
+    animation: growDown 300ms ease-in-out forwards
+}
+
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+    80% {
+        transform: scaleY(1.1)
+    }
+    100% {
+        transform: scaleY(1)
+    }
 }
 
 .billing .label-full .input-container {

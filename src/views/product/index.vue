@@ -206,7 +206,6 @@ const products = ref([
 .products {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.6rem;
 }
 
 .product {
@@ -222,6 +221,11 @@ const products = ref([
     position: relative;
 }
 
+.product-img img {
+    width: 100%;
+    object-fit: cover;
+}
+
 .product-img .overlay {
     background: rgba(255, 255, 255, 0.5);
     position: absolute;
@@ -229,6 +233,13 @@ const products = ref([
     width: 100%;
     height: 100%;
     opacity: 0;
+}
+
+.product-img .overlay img {
+    width: 35px;
+    transition-property: opacity, width;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
 }
 
 .product-img:hover div.overlay {

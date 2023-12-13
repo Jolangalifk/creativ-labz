@@ -107,12 +107,26 @@ const paymentOptions = [
     line-height: 1.5;
     background-color: #dcd7e3;
     color: #515151;
+    animation: growDown 300ms ease-in-out forwards
 }
 
 .payment .list-payment p {
     margin: 0;
     font-size: 14px;
     color: #515151;
+    animation: growDown 300ms ease-in-out forwards
+}
+
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+    80% {
+        transform: scaleY(1.1)
+    }
+    100% {
+        transform: scaleY(1)
+    }
 }
 
 .container-order p {
@@ -146,6 +160,7 @@ const paymentOptions = [
 .button-order button:hover {
     background-color: #00B0BA;
     border-radius: 0;
+    transition: all 200ms ease;
 }
 
 .button-order button:hover .arrow-right {
