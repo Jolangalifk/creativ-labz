@@ -18,6 +18,8 @@ const handleScroll = () => {
 onMounted(() => {
   if (!window) return
   window.addEventListener('scroll', handleScroll);
+  console.log(window.innerHeight)
+  console.log(window.innerWidth)
 });
 
 onUnmounted(() => {
@@ -475,6 +477,7 @@ onUnmounted(() => {
 @media (min-width: 768px) {
   .background {
     height: 170vh;
+    top: -300px;
   }
 }
 
@@ -752,15 +755,11 @@ onUnmounted(() => {
   .about-us .background {
     top: -600px;
   }
-
-  /* .wrapper-about {
-    margin: ;
-  } */
 }
 
 @media (min-width: 1240px) {
   .background {
-    height: 110vh;
+    height: 140vh;
   }
 
   .about-us .background {
@@ -774,10 +773,25 @@ onUnmounted(() => {
 
 @media (min-width: 1440px) {
   .background {
-    top: -500px;
+    height: 140vh;
+    top: -400px;
   }
 
   .about-us .background {
+    top: -600px;
+  }
+}
+
+@media (min-height: 1200px) {
+  .background {
+    height: 90vh;
+    top: -400px;
+  }
+}
+
+@media (min-height: 1500px) {
+  .background {
+    height: 80vh;
     top: -600px;
   }
 }
