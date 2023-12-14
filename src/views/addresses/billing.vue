@@ -158,7 +158,7 @@ watch(computedSelectedLocation, (newValue, oldValue) => {
     </main>
     <Footer />
 </template>
-<style>
+<style scoped>
 .dashboard {
     width: 100%;
     margin-top: 3rem;

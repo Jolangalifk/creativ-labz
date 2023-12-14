@@ -1,9 +1,9 @@
 <script setup>
-import Navbar from '../../components/Navbar.vue';
-import Footer from '../../components/Footer.vue';
-import AccountSideNavigation from "../../components/AccountSideNavigation.vue"
+import Navbar from '../../../components/Navbar.vue';
+import Footer from '../../../components/Footer.vue';
+import AccountSideNavigation from "../../../components/AccountSideNavigation.vue"
 import { ref } from 'vue';
-import { toRupiah } from '../../utils';
+import { toRupiah } from '../../../utils';
 
 const orders = ref([
     {
@@ -46,7 +46,7 @@ const orders = ref([
                                         <span class="item-label">
                                             Order:
                                         </span>
-                                        <router-link to="#">
+                                        <router-link :to="'/my-account/view-order/' + order.id">
                                             #{{ order.id }}
                                         </router-link>
                                     </td>
@@ -78,7 +78,8 @@ const orders = ref([
                                             <button class="button"> <router-link to="#">Pay</router-link>
                                                 <img src="@/assets/icons/arrow-right.svg" class="arrow-right">
                                             </button>
-                                            <button class="button"> <router-link to="#">View</router-link>
+                                            <button class="button"> <router-link
+                                                    :to="'/my-account/view-order/' + order.id">View</router-link>
                                                 <img src="@/assets/icons/arrow-right.svg" class="arrow-right">
                                             </button>
                                             <button class="button"> <router-link to="#">Cancel</router-link>
