@@ -392,6 +392,7 @@ const selectedTab = ref('decs')
 
 .info-tab {
     padding: 2rem;
+    animation: opacity 1000ms ease-in;
 }
 
 .info-tab h2,
@@ -508,6 +509,15 @@ const selectedTab = ref('decs')
     padding-left: 1em;
 }
 
+@keyframes opacity {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
 
 @media (min-width: 768px) {
     .product-container {
