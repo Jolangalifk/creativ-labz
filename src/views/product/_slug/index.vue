@@ -109,9 +109,11 @@ const selectedTab = ref('decs')
                             </template>
                         </select>
                     </div>
-                    <div class="d-flex align-items-start gap-4 mt-4 mb-4">
+                    <div class="d-flex align-items-center gap-4 mt-4 mb-4">
                         <input class="form-control" type="number" min="1" :value="1">
-                        <button class="btn">Add to cart</button>
+                        <button class="btn">Add to cart
+                            <img src="@/assets/icons/arrow-right.svg" class="arrow-right">
+                        </button>
                     </div>
                     <div class="variant-info mt-md-5">
                         <p>SKU: N/A Category: <span class="highlight-text">{{ product.category
@@ -177,7 +179,8 @@ const selectedTab = ref('decs')
                             Save my name, email, and website in this browser for the next time I
                             comment.</label>
                         <div class="mt-4 d-flex justify-content-end">
-                            <button class="btn rounded-5">Submit</button>
+                            <button class="btn rounded-5">Submit 
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -217,7 +220,7 @@ const selectedTab = ref('decs')
 }
 
 .product-container {
-    margin: 4rem 2rem 2rem 2rem;
+    margin: 1rem 2rem 2rem 2rem;
 }
 
 .post-recomendations {
@@ -233,7 +236,7 @@ const selectedTab = ref('decs')
     margin-bottom: 0.6rem;
 }
 
-.custom-breadcrumb>*+* {
+.custom-breadcrumb * {
     margin-right: 0.2rem;
 }
 
@@ -242,7 +245,7 @@ const selectedTab = ref('decs')
     font-size: 0.8125rem;
     line-height: 185%;
     color: #767676;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .img-container {
@@ -334,7 +337,7 @@ const selectedTab = ref('decs')
     color: #3e3e3e;
 }
 
-.btn {
+.btn, .btn:active {
     background-color: #7fdfd5;
     color: white;
     font-size: 1rem;
@@ -342,6 +345,29 @@ const selectedTab = ref('decs')
     font-weight: 500;
     border-radius: 20px;
     padding: 0.3rem 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover {
+    padding: 0.3rem 0.3rem 0.3rem 0.8rem;
+    border-radius: 0;
+}
+
+.btn:hover .arrow-right {
+    opacity: 1;
+    width: fit-content;
+    margin-left: 0;
+}
+
+.btn .arrow-right {
+    opacity: 0;
+    width: 0;
+    margin-left: -0.5rem;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .variant-info p {
@@ -521,7 +547,7 @@ const selectedTab = ref('decs')
 
 @media (min-width: 768px) {
     .product-container {
-        margin: 5rem 5rem 2rem 5rem;
+        margin: 1rem 5rem 2rem 5rem;
     }
 
     .post-recomendations {
